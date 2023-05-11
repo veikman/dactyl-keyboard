@@ -38,7 +38,9 @@
   (let [prop (partial getopt :flanges flange)
         ins (partial prop :inserts)
         base (if (prop :bottom) (getopt :bottom-plates :thickness) 0)
-        gap (max 0 (- (ins :height) base))]
+        gap (max 0 (- (ins :height) base))
+        ins-rt (/ (ins :diameter :top) 2)
+        ins-rb (/ (ins :diameter :bottom) 2)]
     (maybe/union
       (when (prop :bolts :include)
         (merge-bolt getopt (prop :bolts :bolt-properties)
@@ -46,9 +48,11 @@
       (when (ins :include)
         (maybe/union
           (model/translate [0 0 (- (+ (ins :height) (/ (ins :length) 2)))]
-            (model/cylinder [(/ (ins :diameter :bottom) 2)
-                             (/ (ins :diameter :top) 2)]
-                            (ins :length)))
+            (model/union
+              (model/cylinder [ins-rb ins-rt] (ins :length)))
+              ;; render cone above insert as DFM
+              (model/translate [0 0 (- (/ (+ (ins :length) ins-rt) 2))]
+                (model/cylinder [0 ins-rt] ins-rt)))
           (when-not (zero? gap)
             ;; Add a channel along the screw for placing the insert.
             ;; Raise it above the bottom plate, for bottom flanges.
@@ -56,7 +60,7 @@
             ;; arbitrary direction and distance.
             ;; TODO: Styles of inserts, including scad-klupe’s square nuts.
             (maybe/translate [0 0 (- (+ base (/ gap 2)))]
-              (model/cylinder (/ (ins :diameter :bottom) 2) gap))))))))
+              (model/cylinder ins-rb gap))))))))
 
 (defn segment-model
   "Take a boss segment configuration. Return OpenSCAD scaffolding."
