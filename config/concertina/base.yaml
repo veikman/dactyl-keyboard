@@ -978,6 +978,16 @@ tweaks:
     - [t1F, SW]
   # Extensions from the bosses of flange screws into the interior of the thumb
   # cluster.
+  flange-bosses-outer:
+  - above-ground: true
+    hull-around:
+    - [t2F, SSE]
+    - [t3F, SSE, 0, 2]
+    - [t3F, SSW, 1]
+    - [f0-lower-right, null, 0, 2]
+    - [m2F, SSW, 0, 3]
+    - [m1F1]
+  # More such extensions, not relevant to the encoder variant.
   flange-bosses-upper:
   - above-ground: true
     hull-around:
@@ -987,14 +997,6 @@ tweaks:
     - [f0-upper-right, null, 0]
     - [f0-upper-right, null, 2]
     - [m0F1]
-  - above-ground: true
-    hull-around:
-    - [t2F, SSE]
-    - [t3F, SSE, 0, 2]
-    - [t3F, SSW, 1]
-    - [f0-lower-right, null, 0, 2]
-    - [m2F, SSW, 0, 3]
-    - [m1F1]
   - above-ground: true
     # Filling a corner inside the thumb cluster so the channel for
     # f0-lower-right doesn’t cut through its wall.

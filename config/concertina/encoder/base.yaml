@@ -1,0 +1,5 @@
+# Configuration fragment for rotary encoders on the outside axial edge of each
+# thumb cluster.
+
+tweaks:
+  flange-bosses-outer:
