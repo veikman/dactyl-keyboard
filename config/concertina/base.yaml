@@ -1105,10 +1105,13 @@ tweaks:
     - [m0F, SW]
     - [t3L, NNE, 3]
   - above-ground: true
+    highlight: true
     chunk-size: 3
     hull-around:
     - [t3L, NNE, 3]
-    - [m0F, SW]
+    - hull-around:
+      - [m0F, SW]
+      - [m0F2]
     - [t3L, ESE, 3]
     - [m1F, SW]
     - [t3F, NNE, 3]
@@ -1126,8 +1129,10 @@ tweaks:
     - [m1F1]
     - [m1F, SW]
   - above-ground: true
+    chunk-size: 3
     hull-around:
     - [m0F, SW]
+    - [m0F2]
     - [m0F, SE]
     - [m1F, SW]
   # m2F and m3F joined by a couple of secondaries beneath the thumb cluster.
@@ -1461,6 +1466,13 @@ secondaries:
       side: SW
       segment: 0
       extrinsic-offset: [11, 12, 11]
+    size: 3
+  m0F2:
+    anchoring:
+      anchor: m0F
+      side: S
+      segment: 0
+      intrinsic-offset: [0, -2, 0]
     size: 3
   m1F1:
     anchoring:
