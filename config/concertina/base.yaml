@@ -1118,7 +1118,9 @@ tweaks:
     - [sec-far-roof-1a]
     - [m0F, NW]
     - [m0F1]
-    - [m0F, SW]
+    - hull-around:
+      - [m0F, SW]
+      - [m0F2]
     - [t3L2]
     - [m0F2]
     - [t3L1]
@@ -1483,15 +1485,15 @@ secondaries:
       anchor: m0F
       side: SW
       segment: 0
-      intrinsic-offset: [0, -2, 0]
-    size: 3
+      extrinsic-offset: [3, 0, 0]
+    size: 2
   m0F3:
     anchoring:
       anchor: m0F
       side: S
       segment: 0
-      intrinsic-offset: [0, -2, 0]
-    size: 3
+      extrinsic-offset: [2, -2, 0]
+    size: 2
   m1F1:
     anchoring:
       anchor: m1F
@@ -1528,14 +1530,14 @@ secondaries:
       anchor: t3L
       side: SE
       segment: 2
-      extrinsic-offset: [-3, 5, -19]
+      extrinsic-offset: [-3, 5, -14]
     size: 2
   t3L2:
     anchoring:
       anchor: t3L
       side: NE
       segment: 2
-      extrinsic-offset: [-1, 0, -15]
+      extrinsic-offset: [-2, 0, -15]
     size: 2
   # A set of anchors to make the wall between the thumb cluster and the
   # central-housing adapter thick enough, despite making an acute angle against
