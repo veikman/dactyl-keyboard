@@ -534,11 +534,11 @@ by-key:
             ENE:
               parameters:
                 wall:
-                  extent: 3
+                  extent: 2
             ESE:
               parameters:
                 wall:
-                  extent: 3
+                  extent: 2
             SSE:
               parameters:
                 wall:
@@ -1002,9 +1002,9 @@ tweaks:
     # f0-lower-right doesn’t cut through its wall.
     hull-around:
     - [t3F, ESE, 2]
-    - [t3F, ENE, 2]
     - [m2F, SSW, 1]
     - [m1F1]
+    - [t3F1]
   - above-ground: true
     hull-around:
     - [t0F, SSW, 2, 3]
@@ -1063,8 +1063,8 @@ tweaks:
     - [t2L, NNW, 1, 2]
     - [t2L, NNE, 1, 2]
     - [t3L, NNE, 1, 2]
-    - [t3L, ENE, 1, 3]
-    - [t3L, NNE, 2, 3]
+    - [t3L, ENE, 1, 2]
+    - [t3L, NNE, 2]
   thumb-wall:  # More complex additional thumb cluster walling.
   # Bridging the clusters at the top:
   - above-ground: true
@@ -1095,7 +1095,23 @@ tweaks:
       - [sec-far-roof-1a-1]
     - [t2L, NNE, 2, 3]
     - [m0F1]
-    - [t3L, NNE, 2, 3]
+    - [t3L, NNE, 2]
+  # Upper inner wall betweeen clusters, for a rotary encoder:
+  - above-ground: true
+    chunk-size: 3
+      #highlight: true
+    hull-around:
+    - [m0F1]
+    - hull-around:
+      - [t3L, NNE, 2, 3]
+      - [t3L, ENE, 2]
+    - [t3L2]
+    - [t3L, ESE, 2]
+    - [t3L1]
+    - [t3F, ENE, 2]
+    - [t3F1]
+    - [t3F, ESE, 2]
+  # Lower inner wall betweeen clusters:
   - above-ground: true
     chunk-size: 3
     hull-around:
@@ -1103,23 +1119,16 @@ tweaks:
     - [m0F, NW]
     - [m0F1]
     - [m0F, SW]
-    - [t3L, NNE, 3]
-  - above-ground: true
-    highlight: true
-    chunk-size: 3
-    hull-around:
-    - [m0F, SW]
-    - [t3L, NNE, 3]
+    - [t3L2]
     - [m0F2]
-    - [t3L, NNE, 3]
+    - [t3L1]
     - [m0F3]
-    - [t3L, ESE, 3]
+    - [t3F1]
     - [m1F, SW]
-    - [t3F, NNE, 3]
-    - [m1F1]
     - hull-around:
       - [m2F, WSW, 1]
       - [m2F, SSW, 0, 1]
+    - [m1F1]
   - above-ground: true
     chunk-size: 3
     hull-around:
@@ -1168,11 +1177,11 @@ tweaks:
   - above-ground: true
     chunk-size: 3
     hull-around:
-    - [t3F, ENE, 2, 3]
+    - [t3F1]
     - [m2F, SSW, 0, 1]
     - hull-around:
       - [t3F, ESE, 2]
-      - [t3F, SSE, 2, 3]
+      - [t3F, SSE, 2]
     - [m2F, SSW, 3]
     - [t2F, SSE, 2]
     - [sec-near-lower-4-2-1]
@@ -1506,6 +1515,27 @@ secondaries:
     anchoring:
       anchor: m5L1
       extrinsic-offset: [0, 0, 19]
+    size: 2
+  t3F1:
+    anchoring:
+      anchor: t3F
+      side: NE
+      segment: 2
+      extrinsic-offset: [-4, 2, -22]
+    size: 2
+  t3L1:
+    anchoring:
+      anchor: t3L
+      side: SE
+      segment: 2
+      extrinsic-offset: [-3, 5, -19]
+    size: 2
+  t3L2:
+    anchoring:
+      anchor: t3L
+      side: NE
+      segment: 2
+      extrinsic-offset: [-1, 0, -15]
     size: 2
   # A set of anchors to make the wall between the thumb cluster and the
   # central-housing adapter thick enough, despite making an acute angle against
