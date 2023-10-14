@@ -1099,7 +1099,6 @@ tweaks:
   # Upper inner wall betweeen clusters, for a rotary encoder:
   - above-ground: true
     chunk-size: 3
-      #highlight: true
     hull-around:
     - [m0F1]
     - hull-around:
@@ -1118,13 +1117,16 @@ tweaks:
     - [sec-far-roof-1a]
     - [m0F, NW]
     - [m0F1]
-    - hull-around:
-      - [m0F, SW]
-      - [m0F2]
+    - [m0F, SW]
     - [t3L2]
     - [m0F2]
-    - [t3L1]
-    - [m0F3]
+    - [t3L1a]
+    - [m0F3a]
+  - above-ground: true
+    chunk-size: 3
+    hull-around:
+    - [t3L1a]
+    - [m0F3a]
     - [t3F1]
     - [m1F, SW]
     - hull-around:
@@ -1148,6 +1150,18 @@ tweaks:
     - [m0F3]
     - [m0F, SE]
     - [m1F, SW]
+  - above-ground: true
+    hull-around:
+    - [m0F2]
+    - [m0F3]
+    - [m0F3a]
+    - [m1F, SW]
+  - above-ground: true
+    hull-around:
+    - [t3L1a]
+    - [t3L1]
+    - [t3L2]
+    - [t3F1]
   # m2F and m3F joined by a couple of secondaries beneath the thumb cluster.
   - above-ground: true
     chunk-size: 2
@@ -1311,9 +1325,9 @@ tweaks:
     - [m5L, NE]
     - [m5L1]
     - [m5L, NW]
-    - [m5L1b]
+    - [m5L1a]
     - [m4L, NE]
-    - [m5L1b]
+    - [m5L1a]
     - [m4L, NW]
     - hull-around:
       - [m3L, SE]
@@ -1352,7 +1366,7 @@ tweaks:
     - [ca-far-wall-3]
     - [m3L, NNE, 1]
     - [ca-far-wall-2]
-    - [m5L1b]
+    - [m5L1a]
     - [ca-far-wall-1]
     - [m5L1]
     - [ca-far-base]
@@ -1419,7 +1433,7 @@ tweaks:
   - above-ground: true
     hull-around:
     - [m5L1]
-    - [m5L1b]
+    - [m5L1a]
     - [m5L, NW]
     - [m5L, NE]
     - [bottom-main-N, null, 2]
@@ -1492,7 +1506,12 @@ secondaries:
       anchor: m0F
       side: S
       segment: 0
-      extrinsic-offset: [2, -2, 0]
+      extrinsic-offset: [1, -3, -2]
+    size: 2
+  m0F3a:
+    anchoring:
+      anchor: m0F3
+      extrinsic-offset: [8, 3, -1]
     size: 2
   m1F1:
     anchoring:
@@ -1513,7 +1532,7 @@ secondaries:
       segment: 0
       extrinsic-offset: [3, 23, -1]
     size: 2
-  m5L1b:
+  m5L1a:
     anchoring:
       anchor: m5L1
       extrinsic-offset: [0, 0, 19]
@@ -1531,6 +1550,11 @@ secondaries:
       side: SE
       segment: 2
       extrinsic-offset: [-3, 5, -14]
+    size: 2
+  t3L1a:
+    anchoring:
+      anchor: t3L1
+      extrinsic-offset: [-4, 3, -3]
     size: 2
   t3L2:
     anchoring:
