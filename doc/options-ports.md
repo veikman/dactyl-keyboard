@@ -16,6 +16,8 @@ This specific document describes options for the shape and position of any indiv
 
 Notice ports attached directly to microcontroller boards are treated in the `mcu` section, not here.
 
+There are limited facilities for specifying the shape of a port. For making anything other than a cuboid or cylindroid socket, get as close as possible with `tweaks`, then make your own adapter and/or widen the socket with a soldering iron or similar tools to fit a more complex object.
+
 ## Table of contents
 - Parameter <a href="#user-content-include">`include`</a>
 - Parameter <a href="#user-content-body">`body`</a>
@@ -42,20 +44,21 @@ A code identifying the [body](configuration.md) in which the port is cut.
 
 A code identifying a common type of port. The following values are recognized.
 
-* `custom`, meaning that `size` (below) will take effect.
 * `modular-4p4c-616e`: modular connector 4P4C, socket 616E, minus the vertical stripe.
 * `usb-c`: USB C.
 * `usb-full-2b`: full-size USB 2 B.
 * `usb-full-3b`: full-size USB 3 B.
 * `usb-full-a`: full-size USB A.
 * `usb-micro-2b`: USB micro 2 B.
-* `usb-mini-b`: USB mini B.
+* `usb-mini-b`: USB mini B.* `custom-cuboid`, meaning that `size` (below) will take effect, describing a cuboid shape.
+* `custom-cylindroid`, which is like `custom-cuboid` but the shape has an ellipse as its cross-section in the xy plane (before any rotation).
+
 
 ## Parameter <a id="size">`size`</a>
 
-An `[x, y, z]` vector specifying the size of the port in mm. This is used only with the `custom` port type.
+An `[x, y, z]` vector specifying the size of the port in mm. This is used only with `custom-*` port types.
 
-There are limited facilities for specifying the shape of a port. Basically, this parameter assumes a cuboid socket. For any different shape, get as close as possible with `tweaks`, then make your own adapter and/or widen the socket with a soldering iron or similar tools to fit a more complex object.
+For `custom-cylindroid`, the orientation of the cylinder is along the y axis, and therefore x and z are the two diameters of the elliptic cross-section, while y determines the length of the cylindroid.
 
 ## Section <a id="alignment">`alignment`</a>
 
@@ -71,7 +74,7 @@ Which wall or corner of the port itself to place at its anchor. The default valu
 
 ## Section <a id="anchoring">`anchoring`</a>
 
-Where to place the port. The concept of anchoring is explained [here](options-anchoring.md), along with the parameters available in this section.
+Where to place the port. By default, ports face nominal north. The concept of anchoring is explained [here](options-anchoring.md), along with the parameters available in this section.
 
 ## Section <a id="holder">`holder`</a>
 

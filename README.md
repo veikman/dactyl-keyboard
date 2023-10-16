@@ -62,7 +62,7 @@ general CAD libraries for `scad-clj` have grown up around the DMOTE project.
 
 ### License
 
-Copyright © 2015–2020 Matthew Adereth, Tom Short, Viktor Eikman et al.
+Copyright © 2015–2023 Matthew Adereth, Tom Short, Viktor Eikman et al.
 
 The source code for generating the models (everything excluding the
 [things/](things/) and [resources/](resources/) directories) is distributed

@@ -15,7 +15,7 @@
 ports:
   reset-hole:
     include: true
-    type: custom
+    type: custom-cuboid
     size: 6.2
     alignment:
       side: N
@@ -51,4 +51,3 @@ flanges:
         segment: 1
         intrinsic-rotation: [π/-2, 0, 0]
         intrinsic-offset: [-10, -0.15, 0]
-

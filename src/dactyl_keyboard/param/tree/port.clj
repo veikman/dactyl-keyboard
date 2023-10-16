@@ -41,7 +41,13 @@
     "* Assortment drawers built into a large rear or central housing.\n"
     "\n"
     "Notice ports attached directly to microcontroller "
-    "boards are treated in the `mcu` section, not here."]
+    "boards are treated in the `mcu` section, not here.\n"
+    "\n"
+    "There are limited facilities for specifying the shape of a port. "
+    "For making anything other than a cuboid or cylindroid socket, get as "
+    "close as possible with `tweaks`, then make your own "
+    "adapter and/or widen the socket with a soldering iron or similar "
+    "tools to fit a more complex object."]
    [[:include]
     {:default false :parse-fn boolean :validate [::valid/include]}
     "If `true`, include the port. The main use of this option is for "
@@ -52,22 +58,24 @@
     {:default :auto :parse-fn keyword :validate [::valid/body]}
     "A code identifying the [body](configuration.md) in which the port is cut."]
    [[:type]
-    {:default :custom :parse-fn keyword
-     :validate [(set (conj (keys cots/port-facts) :custom))]}
+    {:default :custom-cuboid, :parse-fn keyword
+     :validate [(set (conj (keys cots/port-facts)
+                           :custom-cuboid :custom-cylindroid))]}
     "A code identifying a common type of port. "
     "The following values are recognized.\n\n"
-    "* `custom`, meaning that `size` (below) will take effect.\n"
-    (cots/support-list cots/port-facts)]
+    (cots/support-list cots/port-facts)
+    "* `custom-cuboid`, meaning that `size` (below) will take effect, "
+    "describing a cuboid shape.\n"
+    "* `custom-cylindroid`, which is like `custom-cuboid` but the shape has "
+    "an ellipse as its cross-section in the xy plane (before any rotation).\n"]
    [[:size]
     {:default 1 :parse-fn parse/pad-to-3-tuple
      :validate [::tarmi-core/point-3d]}
     "An `[x, y, z]` vector specifying the size of the port in mm. "
-    "This is used only with the `custom` port type.\n\n"
-    "There are limited facilities for specifying the shape of a port. "
-    "Basically, this parameter assumes a cuboid socket. For any different "
-    "shape, get as close as possible with `tweaks`, then make your own "
-    "adapter and/or widen the socket with a soldering iron or similar "
-    "tools to fit a more complex object."]
+    "This is used only with `custom-*` port types.\n\n"
+    "For `custom-cylindroid`, the orientation of the cylinder is along the y "
+    "axis, and therefore x and z are the two diameters of the elliptic "
+    "cross-section, while y determines the length of the cylindroid."]
    [[:alignment]
     "How the port lines itself up at its position."]
    [[:alignment :segment]
@@ -81,7 +89,7 @@
     "of the port."]
    [[:anchoring]
     anch/anchoring-metadata
-    "Where to place the port. "
+    "Where to place the port. By default, ports face nominal north. "
     stock/anchoring-documentation]
    [[:holder]
     "A map describing a positive addition to the case on five "

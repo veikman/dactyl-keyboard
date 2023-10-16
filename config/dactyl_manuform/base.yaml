@@ -521,7 +521,7 @@ ports:
   big-port:
     # This models an unknown variety of RJ9 socket.
     include: true
-    type: custom
+    type: custom-cuboid
     size: [10.78, 9, 18.38]
     alignment:
       side: NE
@@ -536,7 +536,7 @@ ports:
   small-port:
     # This models an unknown variety of USB socket.
     include: true
-    type: custom
+    type: custom-cuboid
     size: [6.5, 10, 13.6]
     alignment:
       side: NW

@@ -7,13 +7,17 @@ version 0.2.0, thus covering only a fraction of the project’s history.
 ### Changed
 - Modified the design of keycaps on the Concertina, using and matching
   the full set of caps bundled with `dmote-keycap` v0.8.0.
+- The port type `custom` has been renamed to `custom-cuboid`.
 - Started using YAML anchors in bundled configuration files for deduplication.
   This is not a change in application logic, API or design; the YAML parser
   expands each reference to the same effect as before.
 
 ### Added
-- Bundled designs: Added a `kailh.yaml` file for PG1511-style switches on a
-  Concertina.
+- The port type `custom-cylindroid`. This enables round ports.
+- Bundled designs:
+    - Added a `kailh.yaml` file for PG1511-style switches on a
+      Concertina.
+    - Added an `encoder` folder for rotary encoders on a Concertina.
 
 ### Fixed
 - Fixed problems related to keycap size by upgrading to v0.8.0 of the
