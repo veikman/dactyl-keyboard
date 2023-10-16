@@ -1,5 +1,18 @@
 # Configuration fragment for rotary encoders on the outside axial edge of each
 # thumb cluster.
 
-tweaks:
-  flange-bosses-outer:
+ports:
+  rotary-encoder:
+    include: true
+    type: custom-cylindroid  # Round threaded shaft.
+    size: [7, 3, 7]  # 7 mm diameter.
+    alignment:
+      segment: 1
+    anchoring:
+      anchor: t3L1
+      extrinsic-offset: [5.5, -6, 4]
+      intrinsic-rotation: [0, 0, π/-2]
+    holder:
+      # The intention is for this holder to be drilled through in assembly.
+      include: true
+      thickness: 3

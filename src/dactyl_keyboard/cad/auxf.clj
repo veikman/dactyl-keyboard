@@ -123,11 +123,19 @@
 ;; Ports ;;
 ;;;;;;;;;;;
 
+(defn- port-base
+  [getopt id [x y z]]
+  (if (= (getopt :ports id :type) :custom-cylindroid)
+    (->> (model/cylinder (max x z) y)
+      (model/rotate [(/ π 2) 0 0])
+      (model/resize [x y z]))
+    (model/cube x y z)))
+
 (defn port-hole-base
   "Negative space for one port."
   [getopt id]
   (let [[[_ x] [_ y] z] (place/port-hole-size getopt id)]
-    (model/cube x y z)))
+    (port-base getopt id [x y z])))
 
 (defn- port-hole-flared
   "This comes with a flared front plate. This version is suitable for use as
@@ -139,9 +147,9 @@
       (port-hole-base getopt id)
       (model/translate [0 (/ y 2) 0]
         (model/hull
-          (model/cube x misc/wafer z)
+          (port-base getopt id [x misc/wafer z])
           (model/translate [0 1 0]
-            (model/cube (inc x) misc/wafer (inc z))))))))
+            (port-base getopt id [(inc x) misc/wafer (inc z)])))))))
 
 (defn port-holder
   "Positive space for one port. Take the ID of the port, not the holder."
@@ -151,7 +159,7 @@
   (let [[x y z] (place/port-holder-size getopt id)]
     (maybe/translate
       (place/port-holder-offset getopt {:anchor id})
-      (model/cube x y z))))
+      (port-base getopt id [x y z]))))
 
 (defn port-tweak-post
   "A cube the thickness of the wall around a specific holder."

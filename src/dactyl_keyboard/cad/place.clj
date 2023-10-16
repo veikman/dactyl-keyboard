@@ -301,7 +301,7 @@
   [getopt id]
   {:pre [(= (getopt :derived :anchors id ::anch/type) ::anch/port-hole)]}
   (let [type (getopt :ports id :type)
-        [xₛ yₛ zₛ] (if (= type :custom)
+        [xₛ yₛ zₛ] (if (type #{:custom-cuboid :custom-cylindroid})
                      (getopt :ports id :size)
                      (misc/map-to-3d-vec (type cots/port-facts)))
         [xᵢ yᵢ] (map (compensator getopt) [xₛ yₛ])]
