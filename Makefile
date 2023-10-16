@@ -239,6 +239,15 @@ concertina_64key: target/dmote.jar
 	$(eval CONFFILES += config/concertina/assortment/magnets/cylinder5x2p5_centre.yaml)
 	$(TO_SCAD)
 
+concertina_66key: target/dmote.jar
+	$(eval CONFFILES += config/concertina/base.yaml)
+	$(eval CONFFILES += config/concertina/assortment/base.yaml)
+	$(eval CONFFILES += config/concertina/assortment/reset.yaml)
+	$(eval CONFFILES += config/concertina/assortment/magnets/slits.yaml)
+	$(eval CONFFILES += config/concertina/assortment/magnets/cylinder5x2p5_centre.yaml)
+	$(eval CONFFILES += config/concertina/encoder/base.yaml)
+	$(TO_SCAD)
+
 macropad_12key: target/dmote.jar
 	$(eval CONFFILES += config/macropad/base.yaml)
 	$(TO_SCAD)
