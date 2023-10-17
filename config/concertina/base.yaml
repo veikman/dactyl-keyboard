@@ -1106,7 +1106,7 @@ tweaks:
       - [t3L, ENE, 2]
     - [t3L2]
     - [t3L, ESE, 2]
-    - [t3L1]
+    - [t3F1a]
     - [t3F, ENE, 2]
     - [t3F1]
     - [t3F, ESE, 2]
@@ -1120,12 +1120,12 @@ tweaks:
     - [m0F, SW]
     - [t3L2]
     - [m0F2]
-    - [t3L1a]
+    - [t3F1a1]
     - [m0F3a]
   - above-ground: true
     chunk-size: 3
     hull-around:
-    - [t3L1a]
+    - [t3F1a1]
     - [m0F3a]
     - [t3F1]
     - [m1F, SW]
@@ -1157,11 +1157,12 @@ tweaks:
     - [m0F3a]
     - [m1F, SW]
   - above-ground: true
+    chunk-size: 3
     hull-around:
-    - [t3L1a]
-    - [t3L1]
-    - [t3L2]
     - [t3F1]
+    - [t3F1a]
+    - [t3F1a1]
+    - [t3L2]
   # m2F and m3F joined by a couple of secondaries beneath the thumb cluster.
   - above-ground: true
     chunk-size: 2
@@ -1542,26 +1543,25 @@ secondaries:
       anchor: t3F
       side: NE
       segment: 2
-      extrinsic-offset: [-4, 2, -22]
+      extrinsic-offset: [0, 2, -22]
     size: 2
-  t3L1:
+  t3F1a:
     anchoring:
-      anchor: t3L
-      side: SE
-      segment: 2
-      extrinsic-offset: [-3, 5, -14]
+      anchor: t3F1
+      extrinsic-offset: [0, 9, 12]
     size: 2
-  t3L1a:
+  t3F1a1:
+    # Bevel below t3F1a.
     anchoring:
-      anchor: t3L1
-      extrinsic-offset: [-4, 3, -3]
+      anchor: t3F1a
+      extrinsic-offset: [-2, 2, -2]
     size: 2
   t3L2:
     anchoring:
       anchor: t3L
       side: NE
       segment: 2
-      extrinsic-offset: [-2, 0, -15]
+      extrinsic-offset: [1, 0, -15]
     size: 2
   # A set of anchors to make the wall between the thumb cluster and the
   # central-housing adapter thick enough, despite making an acute angle against

@@ -2,17 +2,25 @@
 # thumb cluster.
 
 ports:
+  # A port for a rotary encoder extending horizontally out of the thumb cluster.
   rotary-encoder:
     include: true
     type: custom-cylindroid  # Round threaded shaft.
-    size: [7, 3, 7]  # 7 mm diameter.
+    size: [7, 0.5, 7]  # 7 mm diameter.
     alignment:
       segment: 1
     anchoring:
-      anchor: t3L1
-      extrinsic-offset: [5.5, -6, 4]
+      anchor: t3F1a
+      extrinsic-offset: [2.2, -9, 2]
       intrinsic-rotation: [0, 0, π/-2]
     holder:
-      # The intention is for this holder to be drilled through in assembly.
       include: true
       thickness: 3
+tweaks:
+  # Hollowing out the holder for rotary-encoder.
+  hollow-port:
+  - above-ground: true
+    cut: true
+    hull-around:
+    - [rotary-encoder]
+    - [rotary-encoder, {anchoring: {intrinsic-offset: [0, -5, 0]}}]
