@@ -1120,6 +1120,11 @@ tweaks:
     - [m0F, NW]
     - [m0F1]
     - [m0F, SW]
+    - [m0F2]
+  - above-ground: true
+    chunk-size: 3
+    hull-around:
+    - [m0F1]
     - [t3L1]
     - [m0F2]
     - [rN3]
@@ -1512,7 +1517,7 @@ secondaries:
       anchor: m0F
       side: SW
       segment: 0
-      extrinsic-offset: [3, 0, 0]
+      intrinsic-offset: [0, -1.5, 0]
     size: 2
   m0F3:
     anchoring:
@@ -1524,7 +1529,7 @@ secondaries:
   m0F3a:
     anchoring:
       anchor: m0F3
-      extrinsic-offset: [8, 3, -1]
+      extrinsic-offset: [8, 1, -1]
     size: 2
   m1F1:
     anchoring:
