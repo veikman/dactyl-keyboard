@@ -10,14 +10,14 @@ ports:
     alignment:
       segment: 1
     anchoring:
-      anchor: t3F1a
-      extrinsic-offset: [2.2, -9, 2]
+      anchor: rS1
+      extrinsic-offset: [2, 3, 11]
       intrinsic-rotation: [0, 0, π/-2]
     holder:
       include: true
       thickness: 3
 tweaks:
-  # Hollowing out the holder for rotary-encoder.
+  # Hollowing out the holder for the rotary-encoder port.
   hollow-port:
   - above-ground: true
     cut: true

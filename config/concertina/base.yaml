@@ -1002,9 +1002,11 @@ tweaks:
     # f0-lower-right doesn’t cut through its wall.
     hull-around:
     - [t3F, ESE, 2]
-    - [m2F, SSW, 1]
+    - [m2F, SSW, 0, 1]
     - [m1F1]
-    - [t3F1]
+    - [rS1]
+    - [rS2]
+    - [rS3]
   - above-ground: true
     hull-around:
     - [t0F, SSW, 2, 3]
@@ -1104,11 +1106,11 @@ tweaks:
     - hull-around:
       - [t3L, NNE, 2, 3]
       - [t3L, ENE, 2]
-    - [t3L2]
+    - [t3L1]
     - [t3L, ESE, 2]
-    - [t3F1a]
+    - [rN1]
     - [t3F, ENE, 2]
-    - [t3F1]
+    - [rS1]
     - [t3F, ESE, 2]
   # Lower inner wall betweeen clusters:
   - above-ground: true
@@ -1118,16 +1120,16 @@ tweaks:
     - [m0F, NW]
     - [m0F1]
     - [m0F, SW]
-    - [t3L2]
+    - [t3L1]
     - [m0F2]
-    - [t3F1a1]
+    - [rN3]
     - [m0F3a]
   - above-ground: true
     chunk-size: 3
     hull-around:
-    - [t3F1a1]
+    - [rN3]
     - [m0F3a]
-    - [t3F1]
+    - [rS3]
     - [m1F, SW]
     - hull-around:
       - [m2F, WSW, 1]
@@ -1156,13 +1158,23 @@ tweaks:
     - [m0F3]
     - [m0F3a]
     - [m1F, SW]
+  # Two seams between rotary-encoder points.
   - above-ground: true
     chunk-size: 3
     hull-around:
-    - [t3F1]
-    - [t3F1a]
-    - [t3F1a1]
-    - [t3L2]
+    - [rS1]
+    - [rS2]
+    - [rN1]
+    - [rN2]
+    - [t3L1]
+  - above-ground: true
+    chunk-size: 3
+    hull-around:
+    - [rS2]
+    - [rS3]
+    - [rN2]
+    - [rN3]
+    - [t3L1]
   # m2F and m3F joined by a couple of secondaries beneath the thumb cluster.
   - above-ground: true
     chunk-size: 2
@@ -1194,7 +1206,7 @@ tweaks:
   - above-ground: true
     chunk-size: 3
     hull-around:
-    - [t3F1]
+    - [rS1]
     - [m2F, SSW, 0, 1]
     - hull-around:
       - [t3F, ESE, 2]
@@ -1538,30 +1550,50 @@ secondaries:
       anchor: m5L1
       extrinsic-offset: [0, 0, 19]
     size: 2
-  t3F1:
-    anchoring:
-      anchor: t3F
-      side: NE
-      segment: 2
-      extrinsic-offset: [0, 2, -22]
-    size: 2
-  t3F1a:
-    anchoring:
-      anchor: t3F1
-      extrinsic-offset: [0, 9, 12]
-    size: 2
-  t3F1a1:
-    # Bevel below t3F1a.
-    anchoring:
-      anchor: t3F1a
-      extrinsic-offset: [-2, 2, -2]
-    size: 2
-  t3L2:
+  # Coming off the thumb cluster.
+  t3L1:
     anchoring:
       anchor: t3L
       side: NE
       segment: 2
       extrinsic-offset: [1, 0, -15]
+    size: 2
+  # Space for a rotary encoder based in the thumb cluster.
+  # When there is no rotary encoder port, these points become part of the
+  # support structure of the thumb cluster and make it easier to install thumb
+  # keys.
+  rS1:  # South half, point 1.
+    anchoring:
+      anchor: t3F
+      side: NE
+      segment: 2
+      extrinsic-offset: [0, -2, -20]
+    size: 2
+  rS2:  # Bevel.
+    anchoring:
+      anchor: rS1
+      extrinsic-offset: [-2, 2, -2]
+    size: 2
+  rS3:  # Inward roughly to the end of the base of a rotary encoder.
+    anchoring:
+      anchor: rS2
+      extrinsic-offset: [-8, 0, 0]
+    size: 2
+  rN1:  # Analogous to rS1 but diagonally up and forward.
+    anchoring:
+      anchor: rS1
+      extrinsic-offset: [0, 12, 12]
+    size: 2
+  rN2:
+    anchoring:
+      anchor: rN1
+      extrinsic-offset: [-2, 2, -2]
+    size: 2
+  rN3:
+    # Inward roughly to the end of a rotary encoder’s base.
+    anchoring:
+      anchor: rN2
+      extrinsic-offset: [-8, 0, 0]
     size: 2
   # A set of anchors to make the wall between the thumb cluster and the
   # central-housing adapter thick enough, despite making an acute angle against
