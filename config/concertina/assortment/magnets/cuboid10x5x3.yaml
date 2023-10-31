@@ -1,0 +1,54 @@
+# Configuration fragment for magnet pockets, which are holes for magnets to
+# hold assortment drawers in place in a Concertina.
+#
+# Settings here are for cuboid magnets of actual dimensions slightly smaller
+# than 10 × 5 × 3 mm.
+
+tweaks:
+  inner-magnet-pockets:
+  - above-ground: true
+    cut: true
+    reflect: true
+    hull-around:
+    - [assortment1, SE, 2,
+       &inner-pocket
+       {anchoring: {intrinsic-offset: [-5.2, 3, -2]}, size: &pocket-size [10.4, 5.5, 3]}]
+    - [assortment1, SE, 2,
+       &inner-channel
+       {anchoring: {intrinsic-offset: [-12, 3, -2]}, size: &channel-size [1, 1, 3]}]
+  - above-ground: true
+    cut: true
+    reflect: true
+    hull-around:
+    - [assortment2, SE, 2, *inner-pocket]
+    - [assortment2, SE, 2, *inner-channel]
+  - above-ground: true
+    cut: true
+    reflect: true
+    hull-around:
+    - [assortment3, SE, 2, *inner-pocket]
+    - [assortment3, SE, 2, *inner-channel]
+  # The same sort of pockets but at the front of each drawer, to keep it steady while open.
+  outer-magnet-pockets:
+  - above-ground: true
+    cut: true
+    reflect: true
+    hull-around:
+    - [assortment1, NE, 2,
+       &outer-pocket
+       {anchoring: {intrinsic-offset: [-5.2, -15, -2]}, size: *pocket-size}]
+    - [assortment1, NE, 2,
+       &outer-channel
+       {anchoring: {intrinsic-offset: [-12, -15, -2]}, size: *channel-size}]
+  - above-ground: true
+    cut: true
+    reflect: true
+    hull-around:
+    - [assortment2, NE, 2, *outer-pocket]
+    - [assortment2, NE, 2, *outer-channel]
+  - above-ground: true
+    cut: true
+    reflect: true
+    hull-around:
+    - [assortment3, NE, 2, *outer-pocket]
+    - [assortment3, NE, 2, *outer-channel]
