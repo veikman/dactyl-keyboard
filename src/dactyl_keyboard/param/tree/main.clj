@@ -638,7 +638,7 @@
     {:default :auto :parse-fn keyword :validate [::valid/body]}
     "A code identifying the [body](configuration.md) that houses the MCU."]
    [[:mcu :type]
-    {:default :promicro :parse-fn keyword
+    {:default :rpi-pico :parse-fn keyword
      :validate [(partial contains? cots/mcu-facts)]}
     "A code name for a form factor. "
     "The following values are supported, representing a selection of "

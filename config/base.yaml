@@ -105,7 +105,7 @@ flanges:
           size: [4, 1]
           intrinsic-offset: [0, 0, -6]
 mcu:
-  type: promicro
+  type: rpi-pico
   support:
     lock:
       width-factor: 0.45

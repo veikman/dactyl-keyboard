@@ -674,6 +674,7 @@ A code name for a form factor. The following values are supported, representing 
 * `elite-c`: Elite-C.
 * `promicro`: Pro Micro.
 * `proton-c`: Proton C.
+* `rpi-pico`: Raspberry Pi Pico.
 * `teensy-l`: Teensy++ 2.0.
 * `teensy-m`: Medium-size Teensy, 3.2 or LC.
 * `teensy-s`: Teensy 2.0.

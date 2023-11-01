@@ -5,6 +5,8 @@ version 0.2.0, thus covering only a fraction of the project’s history.
 
 ## [Unreleased]
 ### Changed
+- The default type of microcontroller has changed, from `promicro` to
+  `rpi-pico`.
 - Modified the design of keycaps on the Concertina, using and matching
   the full set of caps bundled with `dmote-keycap` v0.8.0.
 - The port type `custom` has been renamed to `custom-cuboid`.
@@ -19,6 +21,8 @@ version 0.2.0, thus covering only a fraction of the project’s history.
     - Added a `kailh.yaml` file for PG1511-style switches on a
       Concertina.
     - Added an `encoder` folder for rotary encoders on a Concertina.
+- Conical tops for the bosses of heat-set inserts. This is intended to prevent
+  slicing software from adding support material inside the hollows.
 
 ### Fixed
 - Fixed problems related to keycap size by upgrading to v0.8.0 of the
