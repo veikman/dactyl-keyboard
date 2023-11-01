@@ -1475,14 +1475,20 @@ tweaks:
     - [ca-near-lower-1, {anchoring: {extrinsic-offset: [-6, 0, 0]}}]
     - [bottom-main-S, null, 0, 2]
 mcu:
-  include: true
+  # With stiff wires between the keys, there is no need for an MCU shelf in a
+  # Concertina, and therefore no need to specify any of the properties of the
+  # microcontroller in this CAD program.
+  include: false
   anchoring:
     anchor: ci-far-base
     intrinsic-rotation: [π/-2, π/4, π]
     intrinsic-offset: [-16, -3.5, 70]
   support:
     shelf:
-      include: true
+      # The specifications made for an MCU shelf here were written for the Pro
+      # Micro. They are not suitable for large PCBs like that of the Raspberry
+      # Pi Pico, which would protrude through the bookend wall.
+      include: false
       extra-space: [1, 0, 3]
       bevel:
         E: 0.6
