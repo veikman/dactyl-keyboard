@@ -14,6 +14,7 @@ version 0.2.0, thus covering only a fraction of the project’s history.
 
 ### Added
 - The port type `custom-cylindroid`. This enables round ports.
+- The MCU type `rpi-pico`.
 - Bundled designs:
     - Added a `kailh.yaml` file for PG1511-style switches on a
       Concertina.

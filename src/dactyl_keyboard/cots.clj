@@ -78,7 +78,14 @@
    :proton-c {:length 52.9  ; About 34.6 mm snapped off.
               :port-type :usb-c
               :port-overshoot 0.75
-              :description "Proton C"}})
+              :description "Proton C"}
+   ;; Raspberry Pi Foundation products:
+   :rpi-pico {:width 21
+              :length 51
+              :port-type :usb-micro-2b
+              :port-overshoot 1.3
+              :description "Raspberry Pi Pico"}})
+
 
 (def switch-facts
   "Form factors of switches for the purpose of cutting holes into key mounting
