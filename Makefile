@@ -213,14 +213,24 @@ doc/tutorial-1e.md: resources/butty/*/*
 			resources/butty/doc/47.md \
 			> $@
 
-# Phony targets follow.
+# The following curated mix-ins are only useful with targets that hit TO_SCAD.
+vis low mutual caseside: ; @:
 
-# The following are only useful with targets that hit TO_SCAD.
-# They represent curated shorthand for configuration fragments.
-vis: ; $(eval CONFFILES += config/visualization.yaml)
-low: ; $(eval CONFFILES += config/low_resolution.yaml)
-mutual: ; $(eval CONFFILES += config/dmote/wrist/threaded_mutual.yaml)
-caseside: ; $(eval CONFFILES += config/dmote/wrist/threaded_caseside.yaml)
+ifneq ($(filter vis,$(MAKECMDGOALS)),)
+CONFFILES += config/visualization.yaml
+endif
+
+ifneq ($(filter low,$(MAKECMDGOALS)),)
+CONFFILES += config/low_resolution.yaml
+endif
+
+ifneq ($(filter mutual,$(MAKECMDGOALS)),)
+CONFFILES += config/dmote/wrist/threaded_mutual.yaml
+endif
+
+ifneq ($(filter caseside,$(MAKECMDGOALS)),)
+CONFFILES += config/dmote/wrist/threaded_caseside.yaml
+endif
 
 # The following are bundled designs, defining convenient ways to run the application.
 dactylmanuform_46key: target/dmote.jar
