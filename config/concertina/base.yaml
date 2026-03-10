@@ -987,7 +987,7 @@ tweaks:
     - [f0-lower-right, null, 0, 2]
     - [m2F, SSW, 0, 3]
     - [m1F1]
-  # More such extensions, not relevant to the encoder variant.
+  # More such extensions.
   flange-bosses-upper:
   - above-ground: true
     hull-around:
@@ -1098,11 +1098,10 @@ tweaks:
     - [t2L, NNE, 2, 3]
     - [m0F1]
     - [t3L, NNE, 2]
-  # Upper inner wall betweeen clusters, for a rotary encoder:
+  # Upper inner wall betweeen clusters:
   - above-ground: true
     chunk-size: 3
     hull-around:
-    - [m0F1]
     - hull-around:
       - [t3L, NNE, 2, 3]
       - [t3L, ENE, 2]
@@ -1125,7 +1124,7 @@ tweaks:
     chunk-size: 3
     hull-around:
     - [m0F1]
-    - [t3L1]
+    - [t3L2]
     - [m0F2]
     - [rN3]
     - [m0F3a]
@@ -1163,15 +1162,22 @@ tweaks:
     - [m0F3]
     - [m0F3a]
     - [m1F, SW]
-  # Two seams between rotary-encoder points.
+  # Thin seam at the outer bevel between clusters:
   - above-ground: true
     chunk-size: 3
     hull-around:
-    - [rS1]
     - [rS2]
-    - [rN1]
+    - [rS1]
     - [rN2]
-    - [t3L1]
+    - [rN1]
+    - hull-around:
+      - [t3L2]
+      - [t3L1]
+    - hull-around:
+      - [t3L, NNE, 2, 3]
+      - [t3L, ENE, 2]
+    - [m0F1]
+  # {rS2, rS3, rN2, rN3} form a rectangle that prints in the xy-plane.
   - above-ground: true
     chunk-size: 3
     hull-around:
@@ -1179,7 +1185,7 @@ tweaks:
     - [rS3]
     - [rN2]
     - [rN3]
-    - [t3L1]
+    - [t3L2]
   # m2F and m3F joined by a couple of secondaries beneath the thumb cluster.
   - above-ground: true
     chunk-size: 2
@@ -1567,25 +1573,27 @@ secondaries:
       anchor: t3L
       side: NE
       segment: 2
-      extrinsic-offset: [1, 0, -15]
+      extrinsic-offset: [1, -1, -15]
     size: 2
-  # Space for a rotary encoder based in the thumb cluster.
-  # When there is no rotary encoder port, these points become part of the
-  # support structure of the thumb cluster and make it easier to install thumb
-  # keys.
+  t3L2:  # Bevel.
+    anchoring:
+      anchor: t3L1
+      extrinsic-offset: [-3, 2, -1]
+    size: 2
+  # Extra space in the thumb cluster, for mods or for ease of installation.
   rS1:  # South half, point 1.
     anchoring:
       anchor: t3F
       side: NE
       segment: 2
-      extrinsic-offset: [0, -2, -20]
+      extrinsic-offset: [0, -6, -18]
     size: 2
   rS2:  # Bevel.
     anchoring:
       anchor: rS1
       extrinsic-offset: [-2, 2, -2]
     size: 2
-  rS3:  # Inward roughly to the end of the base of a rotary encoder.
+  rS3:  # Inward.
     anchoring:
       anchor: rS2
       extrinsic-offset: [-8, 0, 0]
@@ -1600,8 +1608,7 @@ secondaries:
       anchor: rN1
       extrinsic-offset: [-2, 2, -2]
     size: 2
-  rN3:
-    # Inward roughly to the end of a rotary encoder’s base.
+  rN3:  # Inward again.
     anchoring:
       anchor: rN2
       extrinsic-offset: [-8, 0, 0]
