@@ -3,11 +3,6 @@
 # This resembles the DMOTE but the hands are vertically oriented, and for this
 # reason, the keyboard is joined by a central housing, not split.
 # In this base file, the central housing is largely empty.
-#
-# This version uses only printable dmote-keycap caps and ALPS-style switches.
-# The keys are arranged so tightly in places that other types of caps and
-# switches should be expected to require adjustment of the keyboard design;
-# see kailh.yml for an example.
 
 keys:
   styles:
@@ -697,7 +692,7 @@ central-housing:
           "1":
             intrinsic-offset: [-1, 0, -1]
     - base:
-        offset: [45, 40, 28]
+        offset: [45, 40, 36]
       adapter:
         alias: ca-far-wall-2
         segments:
@@ -711,7 +706,7 @@ central-housing:
         alias: ca-far-wall-1
         segments:
           "0":
-            intrinsic-offset: [2, 0, 0]
+            intrinsic-offset: [7, 0, 0]
           "1":
             intrinsic-offset: [-1, 0, 1]
     - above-ground: true
@@ -722,7 +717,7 @@ central-housing:
         alias: ca-far-base
         segments:
           "0":
-            intrinsic-offset: [2, 0, 0]
+            intrinsic-offset: [7, 0, 0]
           "1":
             intrinsic-offset: [-1, 0, 0]
     # Finally, there’s an “ethereal” point that does not appear in the body or
@@ -810,8 +805,8 @@ flanges:
     - boss-alias: bottom-main-N
       anchoring:
         anchor: ca-far-base
-        intrinsic-rotation: [0, 0, -0.5]
-        extrinsic-offset: [3, -9, 0.25]
+        intrinsic-rotation: [0, 0, 1.2]
+        extrinsic-offset: [-2, -7, 0.25]
     - boss-alias: bottom-main-E
       anchoring:
         anchor: m5L
@@ -1337,26 +1332,20 @@ tweaks:
     - [m4F, SW]
     - [m4F, NW]
   far-wall:  # The far side of the main cluster.
-  # A fairly rectangular plate past m5L and a larger plate for m4L, up to
-  # the side of m3L.
   - above-ground: true
     chunk-size: 3
     hull-around:
     # Start with a brace against the central-housing interface.
     - [ca-bottom-2]
     - [ca-far-base, {anchoring: {extrinsic-offset: [-1, -1, 12]}, size: 2}]
-    # Continue up the wall.
+    # Continue up the pinky-finger keys.
     - [m5L, NE]
     - [m5L1]
     - [m5L, NW]
     - [m5L1a]
     - [m4L, NE]
-    - [m5L1a]
+    - [m5L1b]
     - [m4L, NW]
-    - hull-around:
-      - [m3L, SE]
-      - [m3L, ENE, 1]
-      - [m3L, NNE, 0, 1]
   # Down the far side of the central-housing adapter.
   - above-ground: true
     hull-around:
@@ -1383,16 +1372,33 @@ tweaks:
     - [m2L, NNE, 1]
     - [ca-far-wall-3]
     - [m3L, NNW, 1]
+    - [ca-far-wall-2]
     - [m3L, NNE, 1]
   - above-ground: true
     chunk-size: 3
     hull-around:
-    - [ca-far-wall-3]
-    - [m3L, NNE, 1]
-    - [ca-far-wall-2]
-    - [m5L1a]
-    - [ca-far-wall-1]
+    - [m3L, SE]
+    - [m3L, NNE, 0, 1]
+    - [m4L, NW]
+    - [m5L2a]
+    - [m5L1b]
+  - above-ground: true
+    to-ground: true
+    chunk-size: 3
+    hull-around:
+    - [m5L2a]
+    - [m5L1b]
+    - [m5L2]
     - [m5L1]
+    - [ca-far-base]
+  - above-ground: true
+    chunk-size: 3
+    hull-around:
+    - [m3L, NNE, 0, 1]
+    - [ca-far-wall-2]
+    - [m5L2a]
+    - [ca-far-wall-1]
+    - [m5L2]
     - [ca-far-base]
   # Tweaks for fitting an external USB port and printing the central housing
   # standing on end.
@@ -1455,11 +1461,12 @@ tweaks:
   # main-to-thumb flange and in that orientation, this tweak supports the
   # bosses for bottom-plate fasteners.
   - above-ground: true
+    to-ground: true
     hull-around:
-    - [m5L1]
-    - [m5L1a]
-    - [m5L, NW]
-    - [m5L, NE]
+    - [m5L2]
+    - [m5L2a, {anchoring: {extrinsic-offset: [0, 0, -10]}}]
+    - [ci-far-base, {anchoring: {extrinsic-offset: [8, 0, 0]}}]
+    - [ca-far-wall-1]
     - [bottom-main-N, null, 2]
   - above-ground: true
     hull-around:
@@ -1560,12 +1567,27 @@ secondaries:
       anchor: m5L
       side: NE
       segment: 0
-      extrinsic-offset: [3, 23, -1]
+      extrinsic-offset: [3, 9, -1]
     size: 2
   m5L1a:
     anchoring:
       anchor: m5L1
-      extrinsic-offset: [0, 0, 19]
+      extrinsic-offset: [0, 0, 20]
+    size: 2
+  m5L1b:
+    anchoring:
+      anchor: m5L1
+      extrinsic-offset: [0, 0, 27]
+    size: 2
+  m5L2:
+    anchoring:
+      anchor: m5L1
+      extrinsic-offset: [-1, 18.5, 0]
+    size: 2
+  m5L2a:
+    anchoring:
+      anchor: m5L2
+      extrinsic-offset: [0, 0, 28]
     size: 2
   # Coming off the thumb cluster.
   t3L1:
