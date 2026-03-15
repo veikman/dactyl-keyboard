@@ -8,37 +8,36 @@ tweaks:
       reflect: true
       above-ground: true
       hull-around:
-      - [assortment1, SE, 2, {anchoring: {intrinsic-offset: [-11, 4, -4]}, size: [6, 0.2, 2]}]
-      - [assortment1, SE, 2, {anchoring: {intrinsic-offset: [-11, 4, -4]}, size: [1, 1.5, 5]}]
+      - [assortment1, SE, 2, &i0 {anchoring: {intrinsic-offset: [-11, -4, 4]}, size: [6, 2, 0.2]}]
+      - [assortment1, SE, 2, &i1 {anchoring: {intrinsic-offset: [-11, -4, 4]}, size: [1, 5, 1.5]}]
     - cut: true
       reflect: true
       above-ground: true
       hull-around:
-      - [assortment2, SE, 2, {anchoring: {intrinsic-offset: [-11, 4, -4]}, size: [6, 0.2, 2]}]
-      - [assortment2, SE, 2, {anchoring: {intrinsic-offset: [-11, 4, -4]}, size: [1, 1.5, 5]}]
+      - [assortment2, SE, 2, *i0]
+      - [assortment2, SE, 2, *i1]
     - cut: true
       reflect: true
       above-ground: true
       hull-around:
-      - [assortment3, SE, 2, {anchoring: {intrinsic-offset: [-11, 4, -4]}, size: [6, 0.2, 2]}]
-      - [assortment3, SE, 2, {anchoring: {intrinsic-offset: [-11, 4, -4]}, size: [1, 1.5, 5]}]
+      - [assortment3, SE, 2, *i0]
+      - [assortment3, SE, 2, *i1]
   outer-magnet-pocket-slits:
     - cut: true
       reflect: true
       above-ground: true
       hull-around:
-      - [assortment1, NE, 2, {anchoring: {intrinsic-offset: [-11, -15, -4]}, size: [6, 0.2, 2]}]
-      - [assortment1, NE, 2, {anchoring: {intrinsic-offset: [-11, -15, -4]}, size: [1, 1.5, 5]}]
+      - [assortment1, SE, 0, &o0 {anchoring: {intrinsic-offset: [-11, -4, -15]}, size: [6, 2, 0.2]}]
+      - [assortment1, SE, 0, &o1 {anchoring: {intrinsic-offset: [-11, -4, -15]}, size: [1, 5, 1.5]}]
     - cut: true
       reflect: true
       above-ground: true
       hull-around:
-      - [assortment2, NE, 2, {anchoring: {intrinsic-offset: [-11, -15, -4]}, size: [6, 0.2, 2]}]
-      - [assortment2, NE, 2, {anchoring: {intrinsic-offset: [-11, -15, -4]}, size: [1, 1.5, 5]}]
+      - [assortment2, SE, 0, *o0]
+      - [assortment2, SE, 0, *o1]
     - cut: true
       reflect: true
       above-ground: true
       hull-around:
-      - [assortment3, NE, 2, {anchoring: {intrinsic-offset: [-11, -15, -4]}, size: [6, 0.2, 2]}]
-      - [assortment3, NE, 2, {anchoring: {intrinsic-offset: [-11, -15, -4]}, size: [1, 1.5, 5]}]
-
+      - [assortment3, SE, 0, *o0]
+      - [assortment3, SE, 0, *o1]

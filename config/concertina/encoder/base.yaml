@@ -3,16 +3,13 @@
 ports:
   rotary-encoder:
     include: true
-    type: custom-cylindroid  # Round threaded shaft.
-    size: [7, 7, 3]  # 7 mm diameter.
+    type: custom-cylindroid
+    size: [6.7, 6.7, 3]  # A threaded cylinder with an outer diameter of 7 mm.
     alignment:
       segment: 1
     anchoring:
       anchor: m5L1a
-      extrinsic-offset: [-1, 10, -1]
+      extrinsic-offset: [-1, 9, -1]
       # Rotation here is intended to match both the angle of the thumb cluster
       # on the z axis and the angle of the plate at the anchor point.
       intrinsic-rotation: [0, π/2, 0.12]
-    holder:
-      include: true
-      type: through-hole

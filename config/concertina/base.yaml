@@ -1407,22 +1407,22 @@ tweaks:
     hull-around:  # Wide sides on the port holder for printing ease and strength.
     - [ext-usb-holder]
     - [ext-usb-holder,
-       {anchoring: {side: NW, segment: 1, intrinsic-offset: [-24, -5, 0]},
+       {anchoring: {side: W, intrinsic-offset: [-24, 0, 3]},
         size: [1, 10, 10]}]
   - above-ground: true
-    cut: true  # A dent in the interior wall, for DFM.
+    cut: true  # A dent in the interior wall. DFM.
     hull-around:
     - [ext-usb-hole]
-    - [ext-usb-hole, E, 1, {size: [1, 1, 11]}]
+    - [ext-usb-hole, E, 1, {size: [1, 1, 5]}]
   - above-ground: true
     cut: true  # A hole for USB pins and a locking nub.
     hull-around:
     - [ext-usb-hole,
-       {anchoring: {side: S, segment: 1, intrinsic-offset: [3, -2, -2]},
-        size: [17, 4.01, 13]}]
+       {anchoring: {side: N, segment: 2, intrinsic-offset: [3, -2, -2]},
+        size: [17, 13, 4.01]}]
     - [ext-usb-hole,
-       {anchoring: {side: S, segment: 1, intrinsic-offset: [3, -5, -2]},
-        size: [22, 4.01, 18]}]
+       {anchoring: {side: N, segment: 2, intrinsic-offset: [3, -2, -5]},
+        size: [22, 18, 4.01]}]
   bottom-reinforcement:
   # A thin strip along the east side of the main cluster.
   # This comes in three parts because hulling the entire strip would extend the
@@ -1516,9 +1516,13 @@ ports:
   ext-usb-hole:
     include: true
     type: usb-full-2b
+    alignment:
+      side: N
+      segment: 0
     anchoring:
       anchor: ci-far-base
-      intrinsic-offset: [-21, 0, 25]
+      extrinsic-offset: [-21, 0, 14]
+      intrinsic-rotation: [π/-2, 0, 0]
     holder:
       include: true
       alias: ext-usb-holder

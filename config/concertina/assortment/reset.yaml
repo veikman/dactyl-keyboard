@@ -17,14 +17,11 @@ ports:
     include: true
     type: custom-cuboid
     size: 6.2
-    alignment:
-      side: N
-      segment: 1
     anchoring:
       anchor: assortment3
-      side: W
+      side: E
       segment: 1
-      intrinsic-rotation: [0, 0, π/-2]
+      intrinsic-rotation: [0, π/-2, 0]
     holder:
       include: false  # See comment in the header of this file.
       thickness: 2
@@ -41,13 +38,11 @@ flanges:
     positions:
     - anchoring:
         anchor: reset-hole
-        side: NW
+        side: W
         segment: 1
-        intrinsic-rotation: [π/-2, 0, 0]
         intrinsic-offset: [10, -0.15, 0]
     - anchoring:
         anchor: reset-hole
-        side: NE
+        side: E
         segment: 1
-        intrinsic-rotation: [π/-2, 0, 0]
         intrinsic-offset: [-10, -0.15, 0]

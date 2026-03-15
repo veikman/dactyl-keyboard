@@ -13,12 +13,8 @@ tweaks:
     cut: true
     reflect: true
     hull-around:
-    - [assortment1, SE, 2,
-       &inner-pocket
-       {anchoring: {intrinsic-offset: [-5, 4, -1.755]}, size: &pocket-size [10, 10.5, 2.5]}]
-    - [assortment1, SE, 2,
-       &inner-channel
-       {anchoring: {intrinsic-offset: [-12, 4, -1.755]}, size: &channel-size [1, 1, 2.5]}]
+    - [assortment1, SE, 2, &inner-pocket {anchoring: {intrinsic-offset: [-5, -1.755, 4]}, size: &pocket-size [10, 2.5, 10.5]}]
+    - [assortment1, SE, 2, &inner-channel {anchoring: {intrinsic-offset: [-12, -1.755, 4]}, size: &channel-size [1, 2.5, 1]}]
   - above-ground: true
     cut: true
     reflect: true
@@ -37,21 +33,17 @@ tweaks:
     cut: true
     reflect: true
     hull-around:
-    - [assortment1, NE, 2,
-       &outer-pocket
-       {anchoring: {intrinsic-offset: [-5, -15, -1.755]}, size: *pocket-size}]
-    - [assortment1, NE, 2,
-       &outer-channel
-       {anchoring: {intrinsic-offset: [-12, -15, -1.755]}, size: *channel-size}]
+    - [assortment1, SE, 0, &outer-pocket {anchoring: {intrinsic-offset: [-5, -1.755, -15]}, size: *pocket-size}]
+    - [assortment1, SE, 0, &outer-channel {anchoring: {intrinsic-offset: [-12, -1.755, -15]}, size: *channel-size}]
   - above-ground: true
     cut: true
     reflect: true
     hull-around:
-    - [assortment2, NE, 2, *outer-pocket]
-    - [assortment2, NE, 2, *outer-channel]
+    - [assortment2, SE, 0, *outer-pocket]
+    - [assortment2, SE, 0, *outer-channel]
   - above-ground: true
     cut: true
     reflect: true
     hull-around:
-    - [assortment3, NE, 2, *outer-pocket]
-    - [assortment3, NE, 2, *outer-channel]
+    - [assortment3, SE, 0, *outer-pocket]
+    - [assortment3, SE, 0, *outer-channel]

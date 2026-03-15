@@ -9,5 +9,8 @@ ports:
       anchor: rS1
       extrinsic-offset: [1.8, 11, 17]
     holder:
-      # The more uneven wall of the thumb cluster requires a wall.
-      thickness: 3
+      # The more uneven wall of the thumb cluster requires a wall around the
+      # through-hole.
+      include: true
+      type: through-hole
+      thickness: 2

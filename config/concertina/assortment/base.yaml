@@ -13,16 +13,16 @@ custom-bodies:
     parent-body: central-housing
     cut:
       shape:
-        - [assortment1, E,
-           {anchoring: {intrinsic-offset: [100, 0, 0]},
+        - [assortment1, W,
+           {anchoring: {intrinsic-offset: [-100, 0, 0]},
             size: [200, 200, 200]}]
   right-hand-bookend:
     include: true
     parent-body: central-housing
     cut:
       shape:
-        - [assortment1, W,
-           {anchoring: {intrinsic-offset: [-100, 0, 0]},
+        - [assortment1, E,
+           {anchoring: {intrinsic-offset: [100, 0, 0]},
             size: [200, 200, 200]}]
 flanges:
   assortment-bookend-flanges:
@@ -44,45 +44,45 @@ flanges:
         side: NW
         segment: 0
         intrinsic-rotation: [0, π/-2, 0]
-        intrinsic-offset: [-2, -12, 6]
+        intrinsic-offset: [-2, 6, -12]
     - anchoring:
         anchor: assortment1
-        side: SW
-        segment: 0
+        side: NW
+        segment: 2
         intrinsic-rotation: [0, π/-2, 0]
-        intrinsic-offset: [-2, 10, 6]
+        intrinsic-offset: [-2, 6, 10]
     # One screw beneath each of the four lower corners of each assortment port,
     # except the mid-level rear.
     - anchoring:
         anchor: assortment1
         side: SW
-        segment: 2
+        segment: 0
         intrinsic-rotation: [0, π/-2, 0]
-        intrinsic-offset: [-2, 12, -2]
+        intrinsic-offset: [-2, -2, -6]
     - anchoring:
         anchor: assortment1
-        side: NW
+        side: SW
         segment: 2
         intrinsic-rotation: [0, π/-2, 0]
-        intrinsic-offset: [-2, -6, -2]
+        intrinsic-offset: [-2, -2, 12]
     - anchoring:
         anchor: assortment2
-        side: NW
-        segment: 2
+        side: SW
+        segment: 0
         intrinsic-rotation: [0, π/-2, 0]
-        intrinsic-offset: [-2, -6, -2]
+        intrinsic-offset: [-2, -2, -6]
+    - anchoring:
+        anchor: assortment3
+        side: SW
+        segment: 0
+        intrinsic-rotation: [0, π/-2, 0]
+        intrinsic-offset: [-2, -2, -6]
     - anchoring:
         anchor: assortment3
         side: SW
         segment: 2
         intrinsic-rotation: [0, π/-2, 0]
-        intrinsic-offset: [-2, 12, -2]
-    - anchoring:
-        anchor: assortment3
-        side: NW
-        segment: 2
-        intrinsic-rotation: [0, π/-2, 0]
-        intrinsic-offset: [-2, -6, -2]
+        intrinsic-offset: [-2, -2, 12]
   central-housing-bottom-plate:
     include: true
     bosses:
@@ -143,30 +143,30 @@ ports:
   # partly because this is the natural place to grab and lift the keyboard.
   assortment1:
     include: true
-    size: [162, 92, 25]
+    size: [162, 25, 92]
     anchoring:
-      intrinsic-rotation: [0, 0, π]
-      intrinsic-offset: [0, -55, 106]
+      intrinsic-rotation: [π/2, 0, 0]
+      intrinsic-offset: [0, -55, 93.5]
     holder:
       include: true
       alias: assortment1-holder
       thickness: 2
   assortment2:
     include: true
-    size: [162, 92, 25]
+    size: [162, 25, 92]
     anchoring:
-      intrinsic-rotation: [0, 0, π]
-      intrinsic-offset: [0, -55, 77]
+      intrinsic-rotation: [π/2, 0, 0]
+      intrinsic-offset: [0, -55, 64.5]
     holder:
       include: true
       alias: assortment2-holder
       thickness: 2
   assortment3:
     include: true
-    size: [162, 92, 25]
+    size: [162, 25, 92]
     anchoring:
-      intrinsic-rotation: [0, 0, π]
-      intrinsic-offset: [0, -55, 48]
+      intrinsic-rotation: [π/2, 0, 0]
+      intrinsic-offset: [0, -55, 35.5]
     holder:
       include: true
       alias: assortment3-holder
@@ -179,15 +179,15 @@ tweaks:
   - above-ground: true
     reflect: true
     hull-around:
-    - [assortment1, NE, 0, {anchoring: {intrinsic-offset: [0, -2, 0]}, size: 4}]
-    - [assortment1, NE, 0, {anchoring: {intrinsic-offset: [0, -15, 9]}, size: [4, 1, 18]}]
-    - [assortment1, NE, 0, {anchoring: {intrinsic-offset: [-75, -0.5, 2]}, size: [1, 1, 4]}]
+    - [assortment1, NE, 0, {anchoring: {intrinsic-offset: [0, 0, -2]}, size: 4}]
+    - [assortment1, NE, 0, {anchoring: {intrinsic-offset: [0, 9, -15]}, size: [4, 18, 1]}]
+    - [assortment1, NE, 0, {anchoring: {intrinsic-offset: [-75, 2, -0.5]}, size: [1, 4, 1]}]
   - above-ground: true
     reflect: true
     hull-around:
-    - [assortment1, SE, 0, {anchoring: {intrinsic-offset: [0, 0, 0]}, size: 4}]
-    - [assortment1, SE, 0, {anchoring: {intrinsic-offset: [0, 13, 9]}, size: [4, 1, 18]}]
-    - [assortment1, SE, 0, {anchoring: {intrinsic-offset: [-75, 0, 2]}, size: [1, 1, 4]}]
+    - [assortment1, NE, 2, {anchoring: {intrinsic-offset: [0, 0, 0]}, size: 4}]
+    - [assortment1, NE, 2, {anchoring: {intrinsic-offset: [0, 9, 13]}, size: [4, 18, 1]}]
+    - [assortment1, NE, 2, {anchoring: {intrinsic-offset: [-75, 0, 2]}, size: [1, 4, 1]}]
   # The following two tweaks describe extra shapes just beneath the lowest
   # assortment port. These contain the lowest screws and magnets for the
   # bookend flanges.
@@ -201,26 +201,26 @@ tweaks:
     chunk-size: 2
     hull-around:
     - hull-around:
-      - [assortment1, NE, {anchoring: {intrinsic-offset: [0.5, -1, 0]}, size: 1}]
-      - [assortment1, SE, {anchoring: {intrinsic-offset: [0.5, 0, 0]}, size: 1}]
+      - [assortment1, NE, 0, {anchoring: {intrinsic-offset: [0.5, 0, -1]}, size: 1}]
+      - [assortment1, NE, 2, {anchoring: {intrinsic-offset: [0.5, 0, -1]}, size: 1}]
     - hull-around:
-      - [assortment3, NE, 2, {anchoring: {intrinsic-offset: [0.5, -1, -12]}, size: 1}]
-      - [assortment3, SE, 2, {anchoring: {intrinsic-offset: [0.5, 0, -12]}, size: 1}]
+      - [assortment3, SE, 0, {anchoring: {intrinsic-offset: [0.5, -12, -1]}, size: 1}]
+      - [assortment3, SE, 2, {anchoring: {intrinsic-offset: [0.5, -12, -1]}, size: 1}]
     - hull-around:
-      - [assortment3, NE, 2, {anchoring: {intrinsic-offset: [4.5, -1, -16]}, size: 1}]
-      - [assortment3, SE, 2, {anchoring: {intrinsic-offset: [4.5, 0, -16]}, size: 1}]
+      - [assortment3, SE, 0, {anchoring: {intrinsic-offset: [4.5, -16, -1]}, size: 1}]
+      - [assortment3, SE, 2, {anchoring: {intrinsic-offset: [4.5, -16, -1]}, size: 1}]
   outer-bosses-beneath-drawer-stack:
   - above-ground: true
     reflect: true
     hull-around:
-    - [assortment3, NE, 2, {anchoring: {intrinsic-offset: [-6, -11, -2]}, size: [12, 22, 4]}]
-    - [assortment3, NE, 2, {anchoring: {intrinsic-offset: [-9, -11, -1]}, size: [18, 22, 2]}]
+    - [assortment3, SE, 0, {anchoring: {intrinsic-offset: [-6, -2, -11]}, size: [12, 4, 22]}]
+    - [assortment3, SE, 0, {anchoring: {intrinsic-offset: [-9, -1, -11]}, size: [18, 2, 22]}]
   inner-bosses-beneath-drawer-stack:
   - above-ground: true
     reflect: true
     hull-around:
-    - [assortment3, SE, 2, {anchoring: {intrinsic-offset: [-6, 8, -2]}, size: [12, 18, 4]}]
-    - [assortment3, SE, 2, {anchoring: {intrinsic-offset: [-9, 8, -1]}, size: [18, 18, 2]}]
+    - [assortment3, SE, 2, {anchoring: {intrinsic-offset: [-6, -2, 8]}, size: [12, 4, 18]}]
+    - [assortment3, SE, 2, {anchoring: {intrinsic-offset: [-9, -1, 8]}, size: [18, 2, 18]}]
   # Finally the bosses for bottom-plate screws are drawn.
   central-bottom-plate-bosses:
   - above-ground: true
