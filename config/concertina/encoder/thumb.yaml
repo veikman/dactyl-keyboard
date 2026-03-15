@@ -1,0 +1,13 @@
+# A configuration fragment for moving the rotary encoders of base.yaml to the
+# outside axial edge of each thumb cluster. If the wheels on these encoders are
+# larger than about 10–15 mm in diameter, they’re going to block access to the
+# main clusters.
+
+ports:
+  rotary-encoder:
+    anchoring:
+      anchor: rS1
+      extrinsic-offset: [1.8, 11, 17]
+    holder:
+      # The more uneven wall of the thumb cluster requires a wall.
+      thickness: 3

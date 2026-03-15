@@ -1582,7 +1582,7 @@ secondaries:
   m5L2:
     anchoring:
       anchor: m5L1
-      extrinsic-offset: [-1, 18.5, 0]
+      extrinsic-offset: [-2, 18.5, 0]
     size: 2
   m5L2a:
     anchoring:
@@ -1623,7 +1623,7 @@ secondaries:
   rN1:  # Analogous to rS1 but diagonally up and forward.
     anchoring:
       anchor: rS1
-      extrinsic-offset: [0, 12, 12]
+      extrinsic-offset: [0, 13, 13]
     size: 2
   rN2:
     anchoring:

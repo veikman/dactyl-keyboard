@@ -1,26 +1,18 @@
-# Configuration fragment for rotary encoders on the outside axial edge of each
-# thumb cluster.
+# Configuration fragment for rotary encoders past the pinky-finger keys.
 
 ports:
-  # A port for a rotary encoder extending horizontally out of the thumb cluster.
   rotary-encoder:
     include: true
     type: custom-cylindroid  # Round threaded shaft.
-    size: [7, 0.5, 7]  # 7 mm diameter.
+    size: [7, 7, 3]  # 7 mm diameter.
     alignment:
       segment: 1
     anchoring:
-      anchor: rS1
-      extrinsic-offset: [2, 3, 11]
-      intrinsic-rotation: [0, 0, π/-2]
+      anchor: m5L1a
+      extrinsic-offset: [-1, 10, -1]
+      # Rotation here is intended to match both the angle of the thumb cluster
+      # on the z axis and the angle of the plate at the anchor point.
+      intrinsic-rotation: [0, π/2, 0.12]
     holder:
       include: true
-      thickness: 3
-tweaks:
-  # Hollowing out the holder for the rotary-encoder port.
-  hollow-port:
-  - above-ground: true
-    cut: true
-    hull-around:
-    - [rotary-encoder]
-    - [rotary-encoder, {anchoring: {intrinsic-offset: [0, -5, 0]}}]
+      type: through-hole
