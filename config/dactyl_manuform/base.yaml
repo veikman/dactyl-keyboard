@@ -493,13 +493,15 @@ tweaks:
         - [thumb-tr, ESE, 0, 1]
       - [m03, SSW, 0, 2]
   hole-through-big-port:
-    - {above-ground: true, cut: true,
-       anchoring: {anchor: big-port, side: S, intrinsic-offset: [0, 0, 5]},
-       size: [10.78, 13, 5]}
+    - above-ground: true
+      cut: true
+      anchoring: {anchor: big-port, side: S, intrinsic-offset: [0, 4, 0]}
+      size: [10.78, 5, 13]
   hole-through-small-port:
-    - {above-ground: true, cut: true,
-       anchoring: {anchor: small-port},
-       size: [6.5, 20, 13.6]}
+    - above-ground: true
+      cut: true
+      anchoring: {anchor: small-port}
+      size: [6.5, 13.6, 20]
 mcu:
   include: true
   type: promicro
@@ -522,13 +524,14 @@ ports:
     # This models an unknown variety of RJ9 socket.
     include: true
     type: custom-cuboid
-    size: [10.78, 9, 18.38]
+    size: [10.78, 18.38, 9]
     alignment:
       side: NE
-      segment: 2
+      segment: 0
     anchoring:
       anchor: back-plane
       intrinsic-offset: [-2, 5, -1]
+      intrinsic-rotation: [π/-2, 0, 0]
     holder:
       include: true
       alias: big-holder
@@ -537,13 +540,14 @@ ports:
     # This models an unknown variety of USB socket.
     include: true
     type: custom-cuboid
-    size: [6.5, 10, 13.6]
+    size: [6.5, 13.6, 10]
     alignment:
-      side: NW
-      segment: 2
+      side: N
+      segment: 0
     anchoring:
       anchor: back-plane
       intrinsic-offset: [9, 5, -1]
+      intrinsic-rotation: [π/-2, 0, 0]
     holder:
       include: true
       alias: small-holder
