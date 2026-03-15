@@ -79,11 +79,10 @@
    [[:alignment :segment]
     {:default 0, :validate [#{0 1 2}]}
     "Which vertical segment of the port itself to place at its anchor. "
-    "The default value here is 0, meaning the ceiling of the port."]
+    "The default value here is 0, meaning the face (top) of the port."]
    [[:alignment :side]
-    {:default :N, :parse-fn keyword, :validate [compass/all]}
-    "Which wall or corner of the port itself to place at its anchor. "
-    "The default value here is the open face of the port."]
+    anch/anchor-side-metadata
+    "Which side or corner of the port itself to place at its anchor."]
    [[:anchoring]
     anch/anchoring-metadata
     "Where to place the port. "

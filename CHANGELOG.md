@@ -9,7 +9,8 @@ version 0.2.0, thus covering only a fraction of the project’s history.
   `rpi-pico`.
 - Modified the design of keycaps on the Concertina, using and matching
   the full set of caps bundled with `dmote-keycap` v0.8.0.
-- The `ports` feature has been generalized.
+- The `ports` feature is now more general, in a way that breaks backwards
+  compatibility.
     - The port type `custom` has been renamed to `custom-cuboid`
       to accommodate the new `custom-cylindroid` type of port.
     - The default port-holder `thickness` has changed from 1 mm to 0
@@ -17,8 +18,13 @@ version 0.2.0, thus covering only a fraction of the project’s history.
     - Ports no longer face nominal north (away from the user) by default.
       Instead, they face upward. This is mainly so that `size` specifications
       for the `custom-cylindroid` type makes sense, but it also makes it easier
-      to add gadgets other than switches, such as rotary encoders, to the top
-      of the keyboard.
+      to add gadgets other than switches, such as rotary encoders and screens,
+      to the top surface of the keyboard.
+    - The parameter to align a port to a `side` is now consistent with
+      the placement of `tweaks`, in that it is no longer necessary to
+      specify a side, and that the default value (now `nil`) means the port is
+      *not* shifted to any one of its sides or corners in its intersection with
+      the xy plane. The previous default value was nominal north (`N`).
 - Started using YAML anchors in bundled configuration files for deduplication.
   This is not a change in application logic, API or design; the YAML parser
   expands each reference to the same effect as before.

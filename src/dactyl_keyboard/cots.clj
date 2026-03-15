@@ -25,19 +25,19 @@
   and other such details, but including plastic “rails” for isolation from a
   PCB, since the height added by such rails tends to be included in the metal
   housing of alternate versions standing on end."
-  {:usb-full-a {:width 10 :depth 13.6 :height 6.5
+  {:usb-full-a {:width 10 :depth 6.5 :height 13.6
                 :description "full-size USB A"}
-   :usb-full-2b {:width 12.1 :depth 16.1 :height 11
+   :usb-full-2b {:width 12.1 :depth 11 :height 16.1
                  :description "full-size USB 2 B"}
-   :usb-full-3b {:width 12 :depth 18.3 :height 12.9
+   :usb-full-3b {:width 12 :depth 12.9 :height 18.3
                  :description "full-size USB 3 B"}
-   :usb-mini-b {:width 7.56 :depth 9.27 :height 4
+   :usb-mini-b {:width 7.56 :depth 4 :height 9.27
                 :description "USB mini B"}
-   :usb-micro-2b {:width 7.5 :depth 5.9 :height 2.55
+   :usb-micro-2b {:width 7.5 :depth 2.55 :height 5.9
                   :description "USB micro 2 B"}
-   :usb-c {:width 9.2 :depth 10.5 :height 3.28
+   :usb-c {:width 9.2 :depth 3.28 :height 10.5
            :description "USB C"}
-   :modular-4p4c-616e {:width 10 :depth 11 :height 17.7
+   :modular-4p4c-616e {:width 10 :depth 17.7 :height 11
                        :description (str "modular connector 4P4C, socket "
                                          "616E, minus the vertical stripe")}})
 
