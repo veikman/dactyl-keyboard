@@ -1009,19 +1009,19 @@ tweaks:
       hull-around:
       - [reflection-port]
       - [reflection-port,
-         {anchoring: {segment: 0, intrinsic-offset: [0, 0, 1]}}]
+         {anchoring: {side: S, segment: 1, extrinsic-offset: [0, 0, 1]}}]
     # An opening from the port to the interior.
     - above-ground: true
       cut: true
       hull-around:
       - [reflection-port,
-         {anchoring: {side: S, segment: 1, intrinsic-offset: [0, 0, -3]}, size: [8, 8, 8]}]
+         {anchoring: {segment: 2, intrinsic-offset: [0, -3, 0]}, size: [8, 8, 8]}]
     # A gentle transition from the rear housing’s corners to the port holder.
     - above-ground: true
       hull-around:
       - [reflection-port-holder]
       - [reflection-port-holder,
-         {anchoring: {side: NW, segment: 2, intrinsic-offset: [0, 0, -10]}}]
+         {anchoring: {side: NW, segment: 0, extrinsic-offset: [0, 0, -10]}}]
       - [rear-housing-exterior, SE, 0]
 mcu:
   include: true
@@ -1048,10 +1048,10 @@ ports:
       anchor: rear-housing-exterior
       side: ENE
       segment: 1
-      intrinsic-rotation: [0, 0, π/-2]
+      intrinsic-rotation: [π/-2, 0, π/-2]
       extrinsic-offset: [0, -2, -2]
     alignment:
-      side: NW
+      side: SW
     holder:
       include: true
       alias: reflection-port-holder
