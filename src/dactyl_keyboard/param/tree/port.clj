@@ -41,13 +41,7 @@
     "* Assortment drawers built into a large rear or central housing.\n"
     "\n"
     "Notice ports attached directly to microcontroller "
-    "boards are treated in the `mcu` section, not here.\n"
-    "\n"
-    "There are limited facilities for specifying the shape of a port. "
-    "For making anything other than a cuboid or cylindroid socket, get as "
-    "close as possible with `tweaks`, then make your own "
-    "adapter and/or widen the socket with a soldering iron or similar "
-    "tools to fit a more complex object."]
+    "boards are treated in the `mcu` section, not here.\n"]
    [[:include]
     {:default false :parse-fn boolean :validate [::valid/include]}
     "If `true`, include the port. The main use of this option is for "
@@ -63,19 +57,23 @@
                            :custom-cuboid :custom-cylindroid))]}
     "A code identifying a common type of port. "
     "The following values are recognized.\n\n"
-    (cots/support-list cots/port-facts)
-    "* `custom-cuboid`, meaning that `size` (below) will take effect, "
-    "describing a cuboid shape.\n"
-    "* `custom-cylindroid`, which is like `custom-cuboid` but the shape has "
-    "an ellipse as its cross-section in the xy plane (before any rotation).\n"]
+    (cots/support-list cots/port-facts) "\n"
+    "* `custom-cuboid`, a cuboid shape of any size.\n"
+    "* `custom-cylindroid`, which has an ellipse as its cross-section in the "
+    "xy plane.\n\n"
+    "Only the `custom-*` types use the `size` parameter (below). "
+    "For making anything other than a cuboid or cylindroid socket as a custom "
+    "port, get as close as possible with `tweaks`, then make your own "
+    "adapter and/or widen the socket with a soldering iron or similar "
+    "tools to fit a more complex object."]
    [[:size]
     {:default 1 :parse-fn parse/pad-to-3-tuple
      :validate [::tarmi-core/point-3d]}
     "An `[x, y, z]` vector specifying the size of the port in mm. "
     "This is used only with `custom-*` port types.\n\n"
-    "For `custom-cylindroid`, the orientation of the cylinder is along the y "
-    "axis, and therefore x and z are the two diameters of the elliptic "
-    "cross-section, while y determines the length of the cylindroid."]
+    "For a cuboid, the interpretation is straightforward. "
+    "For a cylindroid, `x` and `y` are the two diameters of the elliptic "
+    "cross-section, while `z` extrudes that cross-section."]
    [[:alignment]
     "How the port lines itself up at its position."]
    [[:alignment :segment]
@@ -85,11 +83,10 @@
    [[:alignment :side]
     {:default :N, :parse-fn keyword, :validate [compass/all]}
     "Which wall or corner of the port itself to place at its anchor. "
-    "The default value here is `N` (nominal north), which is the open face "
-    "of the port."]
+    "The default value here is the open face of the port."]
    [[:anchoring]
     anch/anchoring-metadata
-    "Where to place the port. By default, ports face nominal north. "
+    "Where to place the port. "
     stock/anchoring-documentation]
    [[:holder]
     "A map describing a positive addition to the case on five "
@@ -100,7 +97,21 @@
    [[:holder :alias]
     stock/alias-metadata
     "A name for the holder, to allow anchoring other features to it."]
+   [[:holder :type]
+    {:default :exterior-insert, :parse-fn keyword
+     ;; Canonical types are named so as to reserve :interior-insert (where an
+     ;; item is inserted from inside the body) and (fully) :enclosed).
+     :validate [#{:exterior-insert :through-hole}]}
+    "The type of a holder governs the placement of its walls. "
+    "All holders with non-zero `thickness` (below`) have walls in the local "
+    "xy plane. `through-hole` holders have *only* those walls. They’re "
+    "intended for components that mount securely from both sides, such as "
+    "rotary encoders with a threaded axis and a nut. "
+    "`exterior-insert` holders add a wall at the bottom to secure an item that "
+    "is inserted from outside the case.\n\n"
+    "Regardless of `type`, you can use `tweaks` to put extra holes in a "
+    "holder, for wiring."]
    [[:holder :thickness]
-    {:default 1 :parse-fn num :validate [::valid/thickness]}
-    "A number specifying the thickness of the holder’s wall on each side, "
+    {:default 0 :parse-fn num :validate [::valid/thickness]}
+    "A number specifying the thickness of the holder’s walls on each side, "
     "in mm."]])

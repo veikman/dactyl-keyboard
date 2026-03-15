@@ -16,7 +16,6 @@ This specific document describes options for the shape and position of any indiv
 
 Notice ports attached directly to microcontroller boards are treated in the `mcu` section, not here.
 
-There are limited facilities for specifying the shape of a port. For making anything other than a cuboid or cylindroid socket, get as close as possible with `tweaks`, then make your own adapter and/or widen the socket with a soldering iron or similar tools to fit a more complex object.
 
 ## Table of contents
 - Parameter <a href="#user-content-include">`include`</a>
@@ -30,6 +29,7 @@ There are limited facilities for specifying the shape of a port. For making anyt
 - Section <a href="#user-content-holder">`holder`</a>
     - Parameter <a href="#user-content-holder-include">`include`</a>
     - Parameter <a href="#user-content-holder-alias">`alias`</a>
+    - Parameter <a href="#user-content-holder-type">`type`</a>
     - Parameter <a href="#user-content-holder-thickness">`thickness`</a>
 
 ## Parameter <a id="include">`include`</a>
@@ -50,15 +50,17 @@ A code identifying a common type of port. The following values are recognized.
 * `usb-full-3b`: full-size USB 3 B.
 * `usb-full-a`: full-size USB A.
 * `usb-micro-2b`: USB micro 2 B.
-* `usb-mini-b`: USB mini B.* `custom-cuboid`, meaning that `size` (below) will take effect, describing a cuboid shape.
-* `custom-cylindroid`, which is like `custom-cuboid` but the shape has an ellipse as its cross-section in the xy plane (before any rotation).
+* `usb-mini-b`: USB mini B.
+* `custom-cuboid`, a cuboid shape of any size.
+* `custom-cylindroid`, which has an ellipse as its cross-section in the xy plane.
 
+Only the `custom-*` types use the `size` parameter (below). For making anything other than a cuboid or cylindroid socket as a custom port, get as close as possible with `tweaks`, then make your own adapter and/or widen the socket with a soldering iron or similar tools to fit a more complex object.
 
 ## Parameter <a id="size">`size`</a>
 
 An `[x, y, z]` vector specifying the size of the port in mm. This is used only with `custom-*` port types.
 
-For `custom-cylindroid`, the orientation of the cylinder is along the y axis, and therefore x and z are the two diameters of the elliptic cross-section, while y determines the length of the cylindroid.
+For a cuboid, the interpretation is straightforward. For a cylindroid, `x` and `y` are the two diameters of the elliptic cross-section, while `z` extrudes that cross-section.
 
 ## Section <a id="alignment">`alignment`</a>
 
@@ -70,11 +72,11 @@ Which vertical segment of the port itself to place at its anchor. The default va
 
 ### Parameter <a id="alignment-side">`side`</a>
 
-Which wall or corner of the port itself to place at its anchor. The default value here is `N` (nominal north), which is the open face of the port.
+Which wall or corner of the port itself to place at its anchor. The default value here is the open face of the port.
 
 ## Section <a id="anchoring">`anchoring`</a>
 
-Where to place the port. By default, ports face nominal north. The concept of anchoring is explained [here](options-anchoring.md), along with the parameters available in this section.
+Where to place the port. The concept of anchoring is explained [here](options-anchoring.md), along with the parameters available in this section.
 
 ## Section <a id="holder">`holder`</a>
 
@@ -88,9 +90,15 @@ If `true`, build a wall around the port.
 
 A name for the holder, to allow anchoring other features to it.
 
+### Parameter <a id="holder-type">`type`</a>
+
+The type of a holder governs the placement of its walls. All holders with non-zero `thickness` (below`) have walls in the local xy plane. `through-hole` holders have *only* those walls. They’re intended for components that mount securely from both sides, such as rotary encoders with a threaded axis and a nut. `exterior-insert` holders add a wall at the bottom to secure an item that is inserted from outside the case.
+
+Regardless of `type`, you can use `tweaks` to put extra holes in a holder, for wiring.
+
 ### Parameter <a id="holder-thickness">`thickness`</a>
 
-A number specifying the thickness of the holder’s wall on each side, in mm.
+A number specifying the thickness of the holder’s walls on each side, in mm.
 
 ⸻
 

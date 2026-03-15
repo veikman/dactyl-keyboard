@@ -308,13 +308,14 @@
     [[xₛ xᵢ] [yₛ yᵢ] zₛ]))
 
 (defn port-holder-size
-  "Compute the size of a port holder.
+  "Compute the size of an open-topped port holder.
   Take the ID of the port, not the holder."
   [getopt id]
   {:pre [(= (getopt :derived :anchors id ::anch/type) ::anch/port-hole)]}
   (let [[[x _] [y _] z] (port-hole-size getopt id)
+        type (getopt :ports id :holder :type)
         t (getopt :ports id :holder :thickness)]
-    [(+ x t t) (+ y t) (+ z t t)]))
+    [(+ x t t) (+ y t t) (+ z (if (= type :through-hole) 0 t))]))
 
 (defn port-hole-offset
   "Shift an offset for one part of a port hole.
@@ -327,18 +328,11 @@
   (let [[[_ x] [_ y] z] (port-hole-size getopt anchor)]
     (misc/walled-corner-xyz side segment [x y z] 0)))
 
-(defn- port-alignment-offset
-  "Return a vector moving the centre of one port away from its anchor."
-  [getopt id]
-  (mapv - (port-hole-offset getopt
-            {:anchor id
-             :side (getopt :ports id :alignment :side)
-             :segment (getopt :ports id :alignment :segment)})))
-
 (defn port-holder-offset
   "Shift an offset for one part of a port holder.
-  This is designed to hit inside the wall, not at a corner, on the assumption
-  that a tweak post with the thickness of the wall is being placed."
+  This is designed on the assumption that what is being placed is a
+  tweak post that is the size (in every direction) of the thickness of the port
+  holder’s wall."
   [getopt {:keys [anchor side segment] :or {segment 1}}]
   {:pre [(keyword? anchor)
          (= (getopt :derived :anchors anchor ::anch/type) ::anch/port-hole)]}
@@ -346,10 +340,18 @@
     (throw (ex-info "Invalid segment ID specified for port holder."
               {:configured-segment segment
                :available-segments #{0 1 2}})))
-  (let [t (getopt :ports anchor :holder :thickness)
-        [x y z] (port-holder-size getopt anchor)]
-    (mapv + (misc/walled-corner-xyz side segment [x y z] t)
-            [0 (/ t -2) 0])))
+  (let [type (getopt :ports anchor :holder :type)
+        t (getopt :ports anchor :holder :thickness)]
+    (mapv + (misc/walled-corner-xyz side segment (port-holder-size getopt anchor) t)
+            [0 0 (if (= type :through-hole) 0 (/ t -2))])))
+
+(defn- port-alignment-offset
+  "Return a vector moving the centre of one port away from its anchor."
+  [getopt id]
+  (mapv - (port-hole-offset getopt
+            {:anchor id
+             :side (getopt :ports id :alignment :side)
+             :segment (getopt :ports id :alignment :segment)})))
 
 (defn port-place
   "Place passed object in relation to the indicated port."
@@ -566,13 +568,13 @@
   [getopt {:keys [anchor subject] :as opts}]
   (port-place getopt anchor
     (flex/translate (port-hole-offset getopt opts)
-       subject)))
+      subject)))
 
 (defmethod by-type ::anch/port-holder
   [getopt {:keys [subject] ::anch/keys [primary] :as opts}]
   (port-place getopt primary
     (flex/translate (port-holder-offset getopt (assoc opts :anchor primary))
-       subject)))
+      subject)))
 
 (defmethod by-type ::anch/flange-boss
   [getopt {:keys [flange position-index segment subject]}]

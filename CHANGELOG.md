@@ -9,18 +9,30 @@ version 0.2.0, thus covering only a fraction of the project’s history.
   `rpi-pico`.
 - Modified the design of keycaps on the Concertina, using and matching
   the full set of caps bundled with `dmote-keycap` v0.8.0.
-- The port type `custom` has been renamed to `custom-cuboid`.
+- The `ports` feature has been generalized.
+    - The port type `custom` has been renamed to `custom-cuboid`
+      to accommodate the new `custom-cylindroid` type of port.
+    - The default port-holder `thickness` has changed from 1 mm to 0
+      to accommodate the new `through-hole` type of holder.
+    - Ports no longer face nominal north (away from the user) by default.
+      Instead, they face upward. This is mainly so that `size` specifications
+      for the `custom-cylindroid` type makes sense, but it also makes it easier
+      to add gadgets other than switches, such as rotary encoders, to the top
+      of the keyboard.
 - Started using YAML anchors in bundled configuration files for deduplication.
   This is not a change in application logic, API or design; the YAML parser
   expands each reference to the same effect as before.
 
 ### Added
 - The port type `custom-cylindroid`. This enables round ports.
+- The port-holder type `through-hole`. This enables ports that are walled,
+  but not at the bottom.
 - The MCU type `rpi-pico`.
 - Bundled designs:
     - Added a `kailh.yaml` file for PG1511-style switches on a
       Concertina.
-    - Added an `encoder` folder for rotary encoders on a Concertina.
+    - Added an `encoder` folder for rotary encoders on a Concertina,
+      and a 66-key build variant to use them.
 - Conical tops for the bosses of heat-set inserts. This is intended to prevent
   slicing software from adding support material inside the hollows.
 
