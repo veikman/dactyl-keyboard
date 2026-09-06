@@ -1,7 +1,7 @@
 ## The DMOTE application
 
-This is a CAD program for designing a keyboard that suits you. By editing text
-files of parameters, you can change:
+This is a CAD program for designing a keyboard that suits you. By editing [text
+files of parameters](doc/intro.md), you can change:
 
 - Switch type: ALPS, Kailh (PG1511) or MX.
 - Microcontroller type: Lots of options.
@@ -9,6 +9,8 @@ files of parameters, you can change:
     - Row and column curvature and tilt (tenting).
     - Exceptions at any level, down to the position of individual keys.
 - Minor features like LED strips and wrist rests.
+
+### Bundled designs
 
 Here are two of the application’s bundled designs for concave, columnar,
 ergonomic keyboards, as examples of what you can do:
@@ -21,19 +23,18 @@ keyboard with 20 thumb keys and 3 assortment drawers.
 
 [![Image of the second working DMOTE](http://viktor.eikman.se/image/dmote-2-top-down-view/display)](https://viktor.eikman.se/gallery/the-dmote/)
 
-⤤ The original, split [DMOTE keyboard](http://viktor.eikman.se/article/the-dmote/),
-short for “Dactyl-ManuForm, Opposable Thumb Edition”.
+⤤ The [DMOTE keyboard](http://viktor.eikman.se/article/the-dmote/), short for
+“Dactyl-ManuForm, Opposable Thumb Edition”.
 
-To get started, try the [introduction](doc/intro.md), part of the project’s
-[documentation](doc/).
+A version of the 46-key Dactyl-ManuForm, based on [Tom Short’s
+original](https://github.com/tshort/dactyl-keyboard), is another bundled
+design, and the default build target.
 
-### Links
+### Related projects
 
-This project, the DMOTE application, is a fork of Tom Short’s
-[Dactyl-ManuForm](https://github.com/tshort/dactyl-keyboard). It’s one of many
-forks in the [Dactyl](https://github.com/adereth/dactyl-keyboard) genus.
-
-There’s a small family of accessory projects:
+The DMOTE application is one of many forks in the
+[Dactyl](https://github.com/adereth/dactyl-keyboard) genus. There’s a small
+family of accessory projects for the application:
 
 * [`dmote-keycap`](https://github.com/veikman/dmote-keycap):
   A library used directly by the DMOTE application to model both featureless
@@ -62,7 +63,7 @@ general CAD libraries for `scad-clj` have grown up around the DMOTE project.
 
 ### License
 
-Copyright © 2015–2023 Matthew Adereth, Tom Short, Viktor Eikman et al.
+Copyright © 2015–2026 Matthew Adereth, Tom Short, Viktor Eikman et al.
 
 The source code for generating the models (everything excluding the
 [things/](things/) and [resources/](resources/) directories) is distributed
