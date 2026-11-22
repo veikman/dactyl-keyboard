@@ -68,11 +68,11 @@ How the port lines itself up at its position.
 
 ### Parameter <a id="alignment-segment">`segment`</a>
 
-Which vertical segment of the port itself to place at its anchor. The default value here is 0, meaning the ceiling of the port.
+Which vertical segment of the port itself to place at its anchor. The default value here is 0, meaning the face (top) of the port.
 
 ### Parameter <a id="alignment-side">`side`</a>
 
-Which wall or corner of the port itself to place at its anchor. The default value here is the open face of the port.
+Which side or corner of the port itself to place at its anchor.
 
 ## Section <a id="anchoring">`anchoring`</a>
 
