@@ -25,6 +25,15 @@ version 0.2.0, thus covering only a fraction of the project’s history.
       specify a side, and that the default value (now `nil`) means the port is
       *not* shifted to any one of its sides or corners in its intersection with
       the xy plane. The previous default value was nominal north (`N`).
+- The `wrist-rest` feature has changed. In earlier versions, the application
+  would first compute the bounding box of the `spline` describing the shape of
+  the wrist rest and then put the nominal north-east corner of that bounding
+  box at the wrist rest’s `anchor` (on the right-hand side of the keyboard).
+  The coordinates of the individual points of the spline were significant only
+  relative to one another. In this version, the origin of the coordinate system
+  you use to place each point of the spline is instead the anchor point itself.
+  As a consequence, the wrist rest no longer “moves around” depending on how
+  wide or how deep you make it.
 - Started using YAML anchors in bundled configuration files for deduplication.
   This is not a change in application logic, API or design; the YAML parser
   expands each reference to the same effect as before.

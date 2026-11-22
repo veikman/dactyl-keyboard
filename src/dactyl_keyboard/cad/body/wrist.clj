@@ -286,16 +286,19 @@
   (let [spline-base (mapv :position
                           (getopt :wrist-rest :shape :spline :main-points))
         spline-res (get-resolution getopt :spline :resolution)
-        spline-poly (polygon2 (poly/spline spline-base spline-res))
-        ;; Find a bounding box where p is the southwest corner.
-        bounds (geom/bounds spline-poly)
-        {bound-sw :p bound-size :size} bounds
+        spline-bounds (geom/bounds (polygon2 (poly/spline spline-base spline-res)))
+        {bound-sw-high :p, bound-size :size} spline-bounds  ; :p is the southwest corner.
+        ;; Any intrinsic rotation of the wrist rest should be made around its
+        ;; center, not around its origin, so find the center.
         bound-center (mapv #(/ % 2) bound-size)
-        to-around-origin (fn [point] (mapv - point bound-sw bound-center))
-        ;; Draw the outline anew, still in 2D, now centered on the origin.
-        ;; This obviates moving the pad before rotating it.
-        around-origin (poly/spline (mapv to-around-origin spline-base) spline-res)
-        inset (fn [n] (poly/from-outline (vec around-origin) n))
+        to-around-origin (fn [point] (mapv - point bound-sw-high bound-center))
+        spline-center (mapv to-around-origin spline-base)
+        poly-centered (poly/spline spline-center spline-res)
+        ;; Prepare to compute an offset from the centered, rotatable spline to
+        ;; the anchor. This uses resolution 1 like the user input.
+        bound-sw (fn [sp] (->> (poly/spline sp 1) polygon2 geom/bounds :p))
+        ;; Make further preparations for derived splines used in the model.
+        inset (fn [n] (poly/from-outline (vec poly-centered) n))
         lip-inset (getopt :wrist-rest :shape :lip :inset)
         z2 (getopt :wrist-rest :plinth-height)
         z1 (- z2 (getopt :wrist-rest :shape :lip :height))
@@ -304,27 +307,26 @@
         z3 (+ z2 pad-middle)
         ;; The height of the pad surface is not the nominal :surface-range,
         ;; but that number adjusted by an imprecise multiplication with sin π/2.
-        ;; This is because the functions that builds polyhedron faces must be
+        ;; This is because the functions that build polyhedron faces must be
         ;; able to precisely identify elevation figures like this one.
         pad-above (edge-elevation getopt (/ π 2))
         z4 (+ z3 pad-above)
-        z5 (+ z4 (getopt :wrist-rest :mould-thickness))
-        absolute-ne (place/at-named getopt
-                                    (merge (getopt :wrist-rest :anchoring)
-                                           {:preserve-orientation true
-                                            ::place/n-dimensions 2}))]
+        z5 (+ z4 (getopt :wrist-rest :mould-thickness))]
    {:resolution {:spline spline-res
                  :pad (get-resolution getopt :pad :surface :edge :resolution)}
-    :spline {:base spline-base
-             :poly spline-poly
-             :bounds bounds}
-    :base-polygon (polygon2 around-origin)
+    :spline {:poly spline-base
+             :bounds spline-bounds}
+    :base-polygon (polygon2 poly-centered)
     :outline
       {:base (inset 0)
        :lip (inset lip-inset)
        :mould (inset (+ lip-inset (- (getopt :wrist-rest :mould-thickness))))
        :sprue (inset (getopt :wrist-rest :sprues :inset))}
-    :center-2d (mapv - absolute-ne bound-center)
+    :center-2d (mapv +
+                 (place/at-named getopt
+                   (merge (getopt :wrist-rest :anchoring)
+                          {:preserve-orientation true, ::place/n-dimensions 2}))
+                 (mapv - (bound-sw spline-base) (bound-sw spline-center)))
     :pad-surface-height pad-above
     :z5 z5     ; Base of the mould (as positioned for printing, not use).
     :z4 z4     ; Peak of the entire rest. Top of silicone pad.

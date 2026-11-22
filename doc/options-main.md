@@ -435,8 +435,8 @@ The horizontal outline of the wrist rest is a closed spline.
 
 A list of nameable points, in clockwise order. The spline will pass through all of these and then return to the first one. Each point can have two properties:
 
-- Mandatory: `position`. A pair of coordinates, in mm, relative to other points in the list.
-- Optional: `alias`. A name given to the specific point, for the purpose of placing yet more things in relation to it.
+- Mandatory: `position`. A pair of coordinates, in mm, relative to the `anchoring` of the wrist rest.
+- Optional: `alias`. A name given to the specific point, for the purpose of placing things in relation to it.
 
 ##### Parameter <a id="wrist-rest-shape-spline-resolution">`resolution`</a>
 

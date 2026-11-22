@@ -337,10 +337,10 @@
     "A list of nameable points, in clockwise order. The spline will pass "
     "through all of these and then return to the first one. Each point can "
     "have two properties:\n\n"
-    "- Mandatory: `position`. A pair of coordinates, in mm, relative to other "
-    "points in the list.\n"
+    "- Mandatory: `position`. A pair of coordinates, in mm, relative to the "
+    "`anchoring` of the wrist rest.\n"
     "- Optional: `alias`. A name given to the specific point, for the purpose "
-    "of placing yet more things in relation to it."]
+    "of placing things in relation to it."]
    [[:wrist-rest :shape :spline :resolution]
     {:default 1 :parse-fn num}
     "The amount of vertices per main point. The default is 1. If 1, only the "
