@@ -526,7 +526,7 @@ main-body:
     interval: 16.8
 wrist-rest:
   anchoring:
-    intrinsic-offset: [83, -90, 0]
+    intrinsic-offset: [9, -155, 0]
   plinth-height: 2
   shape:
     spline:
